@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Compass, BookOpen, Users, Leaf, ArrowRight } from "lucide-react";
+import { useCinematicReveal } from "../hooks/useCinematicReveal";
 
 export default function About() {
+  const containerRef = useRef(null);
+  useCinematicReveal(containerRef);
+
   const pillars = [
     {
       icon: <Compass size={22} className="text-brij-accent" />,
@@ -28,7 +32,7 @@ export default function About() {
   return (
     <section id="about" className="w-screen py-20 px-[8vw] flex items-center bg-transparent relative z-20 border-t border-white/5">
       {/* Widescreen Content Wrapper */}
-      <div className="w-full max-w-none text-left text-white">
+      <div ref={containerRef} className="w-full max-w-none text-left text-white">
         
         {/* Two Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start w-full">

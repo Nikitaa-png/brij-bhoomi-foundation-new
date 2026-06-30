@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Sparkles, Users, HeartHandshake } from "lucide-react";
+import { useCinematicReveal } from "../hooks/useCinematicReveal";
 
 export default function WomenEmpowerment() {
+  const containerRef = useRef(null);
+  useCinematicReveal(containerRef);
+
   const cards = [
     {
       icon: <Sparkles size={16} className="text-brij-accent" />,
@@ -23,7 +27,7 @@ export default function WomenEmpowerment() {
   return (
     <section id="empowerment" className="w-screen px-[8vw] py-12 md:py-16 flex items-center bg-transparent relative z-20 border-t border-white/5">
       {/* Widescreen Content Wrapper */}
-      <div className="w-full max-w-none text-left text-white">
+      <div ref={containerRef} className="w-full max-w-none text-left text-white">
         
         {/* Intro Block */}
         <div className="cinematic-reveal border-b border-white/10 pb-4 mb-6">

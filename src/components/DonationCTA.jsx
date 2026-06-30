@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useCinematicReveal } from "../hooks/useCinematicReveal";
 
 export default function DonationCTA() {
+  const containerRef = useRef(null);
+  useCinematicReveal(containerRef);
+
   return (
     <section id="donate-cta" className="w-screen px-[8vw] py-12 md:py-16 flex items-center bg-transparent relative z-20 border-t border-white/5">
       {/* Widescreen Content Wrapper */}
-      <div className="w-full max-w-none text-left text-white">
+      <div ref={containerRef} className="w-full max-w-none text-left text-white">
         
         {/* Tag */}
         <span className="cinematic-reveal text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold mb-4 block">

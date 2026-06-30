@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useCinematicReveal } from "../hooks/useCinematicReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Gallery() {
   const containerRef = useRef(null);
+  useCinematicReveal(containerRef);
 
   const images = [
     {
