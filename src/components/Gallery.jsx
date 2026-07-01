@@ -65,47 +65,6 @@ export default function Gallery() {
   return (
     <section id="gallery" className="w-screen px-[8vw] py-24 flex items-center bg-[#FAF7F0] relative z-20 border-t border-[#1f1a14]/5 overflow-hidden">
       
-      {/* Styles for almost invisible cinematic light and shadow flow */}
-      <style>{`
-        @keyframes driftLightGallery {
-          0%, 100% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.55;
-          }
-          50% {
-            transform: translate(60px, -30px) scale(1.1);
-            opacity: 0.75;
-          }
-        }
-        @keyframes driftShadowGallery {
-          0%, 100% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.45;
-          }
-          50% {
-            transform: translate(-50px, 40px) scale(0.95);
-            opacity: 0.3;
-          }
-        }
-        @keyframes driftTextureGallery {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(12px, 8px);
-          }
-        }
-        .animate-drift-light-gallery {
-          animation: driftLightGallery 48s infinite ease-in-out;
-        }
-        .animate-drift-shadow-gallery {
-          animation: driftShadowGallery 56s infinite ease-in-out;
-        }
-        .animate-drift-texture-gallery {
-          animation: driftTextureGallery 40s infinite ease-in-out;
-        }
-      `}</style>
-
       {/* SVG Grainy Noise Filter */}
       <svg className="absolute w-0 h-0" width="0" height="0">
         <defs>
@@ -116,14 +75,10 @@ export default function Gallery() {
         </defs>
       </svg>
 
-      {/* Soft Flowing Background layers */}
+      {/* Static Background layer */}
       <div className="absolute inset-0 bg-[#FAF7F0] overflow-hidden z-0 pointer-events-none">
-        {/* Flowing Blobs (Soft Moving Light & Shadow) */}
-        <div className="absolute top-[-30%] left-[-20%] w-[80vw] h-[80vw] rounded-full bg-[#FFFDF7] blur-[180px] animate-drift-light-gallery" />
-        <div className="absolute bottom-[-40%] right-[-20%] w-[90vw] h-[90vw] rounded-full bg-[#E8DFD0] blur-[190px] animate-drift-shadow-gallery" />
-        
         {/* Slow Drifting Grainy Noise Overlay */}
-        <div className="absolute inset-0 opacity-[0.055] mix-blend-overlay animate-drift-texture-gallery" style={{ filter: "url(#grainy-paper-gallery)" }} />
+        <div className="absolute inset-0 opacity-[0.055] mix-blend-overlay" style={{ filter: "url(#grainy-paper-gallery)" }} />
       </div>
 
       {/* Content Wrapper */}

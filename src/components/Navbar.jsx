@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/95 text-white border-b border-white/10 py-3 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-black text-white border-b border-white/10 py-3 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Brand Logo */}

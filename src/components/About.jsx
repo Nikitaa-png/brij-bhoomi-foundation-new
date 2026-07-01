@@ -8,22 +8,22 @@ export default function About() {
 
   const pillars = [
     {
-      icon: <Compass size={22} className="text-brij-accent" />,
+      icon: <Compass size={22} className="text-[#B67A2A]" />,
       title: "Cultural Preservation",
       desc: "Safeguarding Sanjhi art, traditional crafts, and spiritual heritage.",
     },
     {
-      icon: <BookOpen size={22} className="text-brij-accent" />,
+      icon: <BookOpen size={22} className="text-[#B67A2A]" />,
       title: "Education & Empowerment",
       desc: "Providing knowledge, skills, and resources to empower every individual.",
     },
     {
-      icon: <Users size={22} className="text-brij-accent" />,
+      icon: <Users size={22} className="text-[#B67A2A]" />,
       title: "Community Development",
       desc: "Building stronger communities through education, awareness & support.",
     },
     {
-      icon: <Leaf size={22} className="text-brij-accent" />,
+      icon: <Leaf size={22} className="text-[#B67A2A]" />,
       title: "Environmental Care",
       desc: "Promoting eco-friendly practices and preserving our sacred environment.",
     },
@@ -32,47 +32,6 @@ export default function About() {
   return (
     <section id="about" className="w-screen py-20 px-[8vw] flex items-center bg-[#FAF7F0] relative z-20 border-t border-[#1f1a14]/5 overflow-hidden">
       
-      {/* Styles for almost invisible cinematic light and shadow flow */}
-      <style>{`
-        @keyframes driftLight {
-          0%, 100% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.55;
-          }
-          50% {
-            transform: translate(60px, -30px) scale(1.1);
-            opacity: 0.75;
-          }
-        }
-        @keyframes driftShadow {
-          0%, 100% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.45;
-          }
-          50% {
-            transform: translate(-50px, 40px) scale(0.95);
-            opacity: 0.3;
-          }
-        }
-        @keyframes driftTexture {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(12px, 8px);
-          }
-        }
-        .animate-drift-light {
-          animation: driftLight 48s infinite ease-in-out;
-        }
-        .animate-drift-shadow {
-          animation: driftShadow 56s infinite ease-in-out;
-        }
-        .animate-drift-texture {
-          animation: driftTexture 40s infinite ease-in-out;
-        }
-      `}</style>
-
       {/* SVG Grainy Noise Filter */}
       <svg className="absolute w-0 h-0" width="0" height="0">
         <defs>
@@ -83,14 +42,10 @@ export default function About() {
         </defs>
       </svg>
 
-      {/* Soft Flowing Background layers */}
+      {/* Static Background layer */}
       <div className="absolute inset-0 bg-[#FAF7F0] overflow-hidden z-0 pointer-events-none">
-        {/* Flowing Blobs (Soft Moving Light & Shadow) */}
-        <div className="absolute top-[-30%] left-[-20%] w-[80vw] h-[80vw] rounded-full bg-[#FFFDF7] blur-[180px] animate-drift-light" />
-        <div className="absolute bottom-[-40%] right-[-20%] w-[90vw] h-[90vw] rounded-full bg-[#E8DFD0] blur-[190px] animate-drift-shadow" />
-        
         {/* Slow Drifting Grainy Noise Overlay */}
-        <div className="absolute inset-0 opacity-[0.055] mix-blend-overlay animate-drift-texture" style={{ filter: "url(#grainy-paper-noise)" }} />
+        <div className="absolute inset-0 opacity-[0.055] mix-blend-overlay" style={{ filter: "url(#grainy-paper-noise)" }} />
       </div>
 
       {/* Widescreen Content Wrapper */}
@@ -102,7 +57,7 @@ export default function About() {
           {/* Left Column: About Summary (col-span-5) */}
           <div className="lg:col-span-5 space-y-5">
             <div className="cinematic-reveal">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block mb-2">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#B67A2A] font-semibold block mb-2 font-sora">
                 About Us
               </span>
               <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight leading-tight text-[#1f1a14]">
@@ -110,7 +65,7 @@ export default function About() {
               </h2>
             </div>
             
-            <p className="cinematic-reveal text-xs text-[#3c372f] leading-relaxed font-inter">
+            <p className="cinematic-reveal text-xs text-[#3c372f] leading-relaxed font-inter font-light">
               We are a non-profit organization working at the intersection of culture, education, environment, and social welfare. Our efforts are rooted in the values of compassion, service, and community upliftment.
             </p>
 
@@ -128,7 +83,7 @@ export default function About() {
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-6 w-full lg:mt-8">
             {pillars.map((pillar, idx) => (
               <div key={idx} className="cinematic-reveal space-y-3.5">
-                <div className="p-2.5 bg-white/60 border border-[#1f1a14]/10 rounded-sm w-fit">
+                <div className="p-2.5 bg-[#FCFAF5] border border-[#1f1a14]/10 rounded-sm w-fit">
                   {pillar.icon}
                 </div>
                 <h3 className="text-xs font-sora font-semibold text-[#1f1a14] tracking-wide">
