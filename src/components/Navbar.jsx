@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm text-white border-b border-white/10 py-3 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/95 text-white border-b border-white/10 py-3 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Brand Logo */}
@@ -79,7 +79,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`xl:hidden fixed inset-0 top-[52px] w-full bg-black/90 backdrop-blur-md border-t border-white/10 transition-all duration-500 ease-in-out z-40 ${
+        className={`xl:hidden fixed inset-0 top-[52px] w-full bg-black border-t border-white/10 transition-all duration-500 ease-in-out z-40 ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >

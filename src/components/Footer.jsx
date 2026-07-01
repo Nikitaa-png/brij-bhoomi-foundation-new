@@ -22,9 +22,25 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black/40 border-t border-white/10 py-12 md:py-16 relative z-20 text-white font-inter w-screen px-[8vw]">
+    <footer className="relative overflow-hidden border-t border-white/10 py-16 text-white font-inter w-screen px-[8vw] z-20 bg-transparent">
+      
+      {/* Background Video (Ghat River) */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-85"
+      >
+        <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark Mask Overlay */}
+      <div className="absolute inset-0 bg-black/75 z-10 pointer-events-none" />
+
       {/* Widescreen Content Wrapper */}
-      <div className="w-full max-w-none text-left">
+      <div className="w-full max-w-none text-left relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 mb-12 w-full">
           
           {/* Logo & Brand Info */}
@@ -46,7 +62,7 @@ export default function Footer() {
               Preserving Legacies. Empowering Lives.
             </div>
           </div>
-
+ 
           {/* Site Navigation Links */}
           <div className="cinematic-reveal md:col-span-3">
             <h4 className="text-[10px] font-semibold text-white uppercase tracking-wider mb-4 font-sora">
@@ -65,7 +81,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
+ 
           {/* Socials Connection */}
           <div className="cinematic-reveal md:col-span-3">
             <h4 className="text-[10px] font-semibold text-white uppercase tracking-wider mb-4 font-sora">
@@ -84,9 +100,9 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
+ 
         </div>
-
+ 
         {/* Bottom copyright notice */}
         <div className="cinematic-reveal border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-white/50 w-full">
           <p>
@@ -100,7 +116,7 @@ export default function Footer() {
             <a href="#" className="hover:text-brij-accent transition-editorial">CSR Guidelines</a>
           </div>
         </div>
-
+ 
       </div>
     </footer>
   );

@@ -14,7 +14,7 @@ export default function Impact() {
       value: 500,
       suffix: "+",
       label: "People Reached",
-      desc: "Direct beneficiaries of local workshops, healthcare camps, and artisan grans.",
+      desc: "Direct beneficiaries of local workshops, healthcare camps, and artisan grants.",
     },
     {
       value: 20,
@@ -63,48 +63,66 @@ export default function Impact() {
   }, []);
 
   return (
-    <section id="impact" className="w-screen px-[8vw] py-12 md:py-16 flex items-center bg-transparent relative z-20 border-t border-white/5">
-      {/* Content Wrapper (no container bg) */}
-      <div ref={containerRef} className="w-full max-w-none text-left text-white">
+    <section id="impact" className="w-screen px-[8vw] py-24 flex items-center bg-[#F2E8D6] relative z-20 border-t border-[#D8C6A8] overflow-hidden">
+      
+      {/* SVG Grainy Noise Filter */}
+      <svg className="absolute w-0 h-0" width="0" height="0">
+        <defs>
+          <filter id="grainy-paper-impact" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.03 0" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Warm Background layer */}
+      <div className="absolute inset-0 bg-[#F2E8D6] overflow-hidden z-0 pointer-events-none">
+        {/* Soft Grainy Paper Noise Overlay (3% opacity) */}
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ filter: "url(#grainy-paper-impact)" }} />
+      </div>
+
+      {/* Widescreen Content Wrapper */}
+      <div ref={containerRef} className="w-full max-w-none text-left relative z-10">
         
         {/* Header Block */}
-        <div className="cinematic-reveal border-b border-white/10 pb-4 mb-6">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block mb-1">
+        <div className="cinematic-reveal border-b border-[#D8C6A8] pb-6 mb-10">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#B67A2A] font-semibold block mb-1.5 font-sora">
             Our Footprint
           </span>
-          <h2 className="text-2xl md:text-3xl font-sora font-semibold tracking-tight text-white">
+          <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight text-[#2E2E2E]">
             Real Measures of Local Impact
           </h2>
         </div>
 
-        <p className="cinematic-reveal text-xs text-white/80 leading-relaxed mb-6 font-inter">
+        <p className="cinematic-reveal text-xs text-[#2E2E2E] leading-relaxed mb-6 font-inter font-light">
           We prioritize deep sustainable results over superficial metrics. Our milestones represent the hands-on progress made by our community and volunteers.
         </p>
 
-        {/* Stats Grid */}
+        {/* Stats Grid (Rounded 20px corners, alt backgrounds, and soft shadows) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="cinematic-reveal bg-black/25 backdrop-blur-sm border border-white/20 p-4 rounded-sm flex flex-col justify-between text-white hover:border-brij-accent/40 transition-editorial w-full"
+              className="cinematic-reveal bg-[#FCFAF5] border border-[#D8C6A8] p-6 rounded-[20px] flex flex-col justify-between text-[#2E2E2E] hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-editorial w-full"
+              style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.04)" }}
             >
               <div>
-                <div className="flex items-baseline mb-2 text-white">
+                <div className="flex items-baseline mb-2 text-[#2E2E2E]">
                   <span
-                    className="stat-counter text-2xl font-sora font-semibold tracking-tight text-white"
+                    className="stat-counter text-2xl font-sora font-semibold tracking-tight text-[#2E2E2E]"
                     data-target={stat.value}
                   >
                     0
                   </span>
-                  <span className="text-lg font-sora font-semibold text-brij-accent">
+                  <span className="text-lg font-sora font-semibold text-[#B67A2A]">
                     {stat.suffix}
                   </span>
                 </div>
-                <h3 className="text-xs font-sora font-semibold text-white mb-1">
+                <h3 className="text-xs font-sora font-semibold text-[#2E2E2E] mb-1">
                   {stat.label}
                 </h3>
               </div>
-              <p className="text-[10px] text-white/70 leading-relaxed pt-2.5 border-t border-white/10">
+              <p className="text-[10px] text-[#555555] leading-relaxed pt-2.5 border-t border-[#D8C6A8]/45 font-inter font-light">
                 {stat.desc}
               </p>
             </div>

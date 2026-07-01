@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import { gsap } from "gsap";
+import gsap from "gsap";
 
 // Inline SVG components to ensure zero dependency compilation errors on older package versions
 const FacebookIcon = () => (
@@ -30,16 +30,15 @@ const YoutubeIcon = () => (
 );
 
 export default function Hero() {
-  const textRef = useRef(null);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray(".hero-line", textRef.current);
-
-      // Hide all items immediately
+      // Select the static hero elements
+      const items = gsap.utils.toArray([".hero-label", ".hero-heading", ".hero-paragraph", ".hero-buttons"]);
+      
+      // Initial state
       gsap.set(items, { opacity: 0, y: 80, filter: "blur(12px)" });
-
-      // Animate each one in, one by one
+      
+      // Reveal animation on page load
       gsap.to(items, {
         opacity: 1,
         y: 0,
@@ -47,16 +46,31 @@ export default function Hero() {
         duration: 1.2,
         ease: "power4.out",
         stagger: 0.18,
-        delay: 0.4,
+        delay: 0.2
       });
-    }, textRef);
+    });
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="hero" className="w-screen h-screen min-h-screen flex items-center justify-start bg-transparent relative z-20 px-[8vw]">
+    <section id="hero" className="w-screen h-screen min-h-screen flex items-center justify-start bg-transparent relative overflow-hidden z-20 px-[8vw]">
       
+      {/* Background Video (Hero section only) */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-85"
+      >
+        <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark Mask Overlay (Hero section only) */}
+      <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
+
       {/* 1. Left Vertical Socials Bar */}
       <div className="absolute left-[3vw] bottom-[8vh] flex flex-col gap-4 items-center z-30 hidden md:flex">
         <div className="w-[1px] h-12 bg-white/20 mb-2"></div>
@@ -85,28 +99,20 @@ export default function Hero() {
       </div>
 
       {/* Content wrapper */}
-      <div ref={textRef} className="relative w-full max-w-none text-left text-white z-20">
+      <div className="relative w-full max-w-none text-left text-white z-20">
         <div className="max-w-[700px] space-y-4">
-
-          {/* Line 1: eyebrow */}
-          <span className="hero-line text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
+          <span className="hero-label text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
             Preserving Legacy, Nurturing Futures
           </span>
-
-          {/* Lines 2-4: heading, each line separate */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sora font-semibold tracking-tight leading-tight text-white">
-            <span className="hero-line block">Preserving Culture.</span>
-            <span className="hero-line block">Empowering Communities.</span>
-            <span className="hero-line block">Inspiring <span className="text-brij-accent">Change.</span></span>
+          <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-sora font-semibold tracking-tight leading-tight text-white">
+            Preserving Culture.<br />
+            Empowering Communities.<br />
+            Inspiring <span className="text-brij-accent">Change.</span>
           </h1>
-
-          {/* Line 5: paragraph */}
-          <p className="hero-line text-[12px] md:text-[13px] font-light text-white/70 leading-relaxed tracking-wide font-inter">
+          <p className="hero-paragraph text-[12px] md:text-[13px] font-light text-white/70 leading-relaxed tracking-wide font-inter">
             Brij Bhoomi Foundation is committed to preserving our rich heritage, empowering people, and building a stronger, more inclusive society for future generations.
           </p>
-
-          {/* Line 6: buttons */}
-          <div className="hero-line flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-4">
+          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-4">
             <a
               href="#about"
               className="flex items-center gap-1.5 px-6 py-2.5 bg-brij-accent text-white text-[10px] font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-editorial rounded-sm w-full sm:w-auto text-center"
@@ -120,7 +126,6 @@ export default function Hero() {
               Donate Now ♡
             </a>
           </div>
-
         </div>
       </div>
       

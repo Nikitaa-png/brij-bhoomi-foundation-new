@@ -15,22 +15,8 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="bg-transparent min-h-screen text-white overflow-x-hidden relative">
-      {/* Global Background Video (z-0) */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="bg-video-element fixed inset-0 w-screen h-screen object-cover z-0 pointer-events-none opacity-85"
-      >
-        <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Global Dark Mask Overlay (z-10) */}
-      <div className="fixed inset-0 bg-black/45 z-10 pointer-events-none" />
-
+    <div className="bg-[#0a0a0a] min-h-screen text-white overflow-x-hidden relative">
+      
       {/* Navbar stays fixed above everything (z-50) */}
       <Navbar />
 

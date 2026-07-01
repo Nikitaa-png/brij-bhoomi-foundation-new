@@ -12,16 +12,33 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="w-screen px-[8vw] py-12 md:py-16 flex items-center bg-transparent relative z-20 border-t border-white/5">
+    <section id="contact" className="w-screen px-[8vw] py-24 flex items-center bg-[#F2E8D6] relative z-20 border-t border-[#D8C6A8] overflow-hidden">
+      
+      {/* SVG Grainy Noise Filter */}
+      <svg className="absolute w-0 h-0" width="0" height="0">
+        <defs>
+          <filter id="grainy-paper-contact" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.03 0" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Warm Background layer */}
+      <div className="absolute inset-0 bg-[#F2E8D6] overflow-hidden z-0 pointer-events-none">
+        {/* Soft Grainy Paper Noise Overlay (3% opacity) */}
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{ filter: "url(#grainy-paper-contact)" }} />
+      </div>
+
       {/* Widescreen Content Wrapper */}
-      <div ref={containerRef} className="w-full max-w-none text-left text-white">
+      <div ref={containerRef} className="w-full max-w-none text-left relative z-10">
         
         {/* Header Block */}
-        <div className="cinematic-reveal border-b border-white/10 pb-4 mb-6">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block mb-1">
+        <div className="cinematic-reveal border-b border-[#D8C6A8] pb-6 mb-10">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#B67A2A] font-semibold block mb-1.5 font-sora">
             Get In Touch
           </span>
-          <h2 className="text-2xl md:text-3xl font-sora font-semibold tracking-tight text-white">
+          <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight text-[#2E2E2E]">
             Connect With Us
           </h2>
         </div>
@@ -31,20 +48,20 @@ export default function Contact() {
           
           {/* Left Column: Contact Details */}
           <div className="cinematic-reveal lg:col-span-6 space-y-6">
-            <p className="text-xs text-white/80 leading-relaxed font-inter">
+            <p className="text-xs text-[#2E2E2E] leading-relaxed font-inter font-light">
               Have questions about our initiatives, volunteer opportunities, or donation transparency? Reach out to our field office in Vrindavan. We welcome collaborations with cultural scholars, ecologists, and philanthropists.
             </p>
 
             <div className="space-y-4 pt-2">
               <div className="flex gap-3 items-start">
-                <div className="p-2 bg-white/10 border border-white/10 text-brij-accent rounded-sm mt-0.5">
+                <div className="p-2 bg-[#F2E8D6] border border-[#D8C6A8] text-[#B67A2A] rounded-sm mt-0.5">
                   <MapPin size={14} />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                  <h4 className="text-[10px] font-semibold text-[#2E2E2E] uppercase tracking-wider mb-0.5 font-sora">
                     Field Office Address
                   </h4>
-                  <p className="text-xs text-white/70 leading-relaxed font-inter">
+                  <p className="text-xs text-[#2E2E2E] leading-relaxed font-inter font-light">
                     Brij Bhoomi Foundation, near Raman Reti,<br />
                     Vrindavan, Mathura District, UP, 281121, India
                   </p>
@@ -52,28 +69,28 @@ export default function Contact() {
               </div>
 
               <div className="flex gap-3 items-start">
-                <div className="p-2 bg-white/10 border border-white/10 text-brij-accent rounded-sm mt-0.5">
+                <div className="p-2 bg-[#F2E8D6] border border-[#D8C6A8] text-[#B67A2A] rounded-sm mt-0.5">
                   <Phone size={14} />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                  <h4 className="text-[10px] font-semibold text-[#2E2E2E] uppercase tracking-wider mb-0.5 font-sora">
                     Phone Inquiry
                   </h4>
-                  <p className="text-xs text-white/70">
+                  <p className="text-xs text-[#2E2E2E] font-inter font-light">
                     +91 565 244 1088 (Office Hours)
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-3 items-start">
-                <div className="p-2 bg-white/10 border border-white/10 text-brij-accent rounded-sm mt-0.5">
+                <div className="p-2 bg-[#F2E8D6] border border-[#D8C6A8] text-[#B67A2A] rounded-sm mt-0.5">
                   <Mail size={14} />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                  <h4 className="text-[10px] font-semibold text-[#2E2E2E] uppercase tracking-wider mb-0.5 font-sora">
                     Email Correspondence
                   </h4>
-                  <p className="text-xs text-white/70 hover:text-brij-accent transition-editorial">
+                  <p className="text-xs text-[#2E2E2E] hover:text-[#B67A2A] transition-editorial font-inter font-light">
                     <a href="mailto:info@brijbhoomifoundation.org">info@brijbhoomifoundation.org</a>
                   </p>
                 </div>
@@ -81,33 +98,36 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Contact Form (Dark Glass) */}
-          <div className="cinematic-reveal lg:col-span-6 bg-black/25 backdrop-blur-sm p-5 border border-white/20 rounded-sm w-full">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3">
+          {/* Right Column: Contact Form (FCFAF5 Card) */}
+          <div
+            className="cinematic-reveal lg:col-span-6 bg-[#FCFAF5] p-6 border border-[#D8C6A8] rounded-[20px] w-full"
+            style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.04)" }}
+          >
+            <h4 className="text-xs font-semibold text-[#2E2E2E] uppercase tracking-wider mb-4 font-sora">
               Send an Inquiry
             </h4>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
                 placeholder="Your Name"
                 required
-                className="w-full px-3 py-2 bg-white/5 border border-white/20 text-xs text-white placeholder-white/50 focus:outline-none focus:border-brij-accent transition-editorial rounded-sm"
+                className="w-full px-3 py-2.5 bg-white border border-[#D8C6A8] text-xs text-[#2E2E2E] placeholder-[#555555]/55 focus:outline-none focus:border-[#B67A2A] transition-editorial rounded-sm"
               />
               <input
                 type="email"
                 placeholder="Email Address"
                 required
-                className="w-full px-3 py-2 bg-white/5 border border-white/20 text-xs text-white placeholder-white/50 focus:outline-none focus:border-brij-accent transition-editorial rounded-sm"
+                className="w-full px-3 py-2.5 bg-white border border-[#D8C6A8] text-xs text-[#2E2E2E] placeholder-[#555555]/55 focus:outline-none focus:border-[#B67A2A] transition-editorial rounded-sm"
               />
               <textarea
                 placeholder="Your message..."
                 required
                 rows={3}
-                className="w-full px-3 py-2 bg-white/5 border border-white/20 text-xs text-white placeholder-white/50 focus:outline-none focus:border-brij-accent transition-editorial rounded-sm resize-none"
+                className="w-full px-3 py-2.5 bg-white border border-[#D8C6A8] text-xs text-[#2E2E2E] placeholder-[#555555]/55 focus:outline-none focus:border-[#B67A2A] transition-editorial rounded-sm resize-none"
               />
               <button
                 type="submit"
-                className="w-full py-2 bg-white text-black text-[10px] font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-editorial flex items-center justify-center gap-1.5 rounded-sm"
+                className="w-full py-2.5 bg-[#8B6F47] text-white text-[10px] font-semibold uppercase tracking-wider border border-[#8B6F47] hover:bg-[#1F1F1F] hover:border-[#1F1F1F] hover:text-white transition-editorial flex items-center justify-center gap-1.5 rounded-sm"
               >
                 Send Message <Send size={10} />
               </button>
