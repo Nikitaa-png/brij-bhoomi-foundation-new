@@ -5,14 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Attaches cinematic enter + exit animations to every .cinematic-reveal
- * element inside the given ref container.
- *
- * Initial state → from bottom (y:80px, blur:12px, opacity:0)
- * Visible state → in viewport (y:0, blur:0px, opacity:1)
- * Exit state    → to top (y:-80px, blur:12px, opacity:0)
- *
- * No scroll-pinning, no hijacking — pure ScrollTrigger callbacks.
+ * Attaches minimal, snappy entrance animations to elements inside the container.
+ * Runs once per section entry to keep animations lightweight and non-distracting.
  */
 export function useCinematicReveal(containerRef) {
   useEffect(() => {
@@ -20,56 +14,19 @@ export function useCinematicReveal(containerRef) {
       const items = gsap.utils.toArray(".cinematic-reveal", containerRef.current);
       if (items.length === 0) return;
 
-      // Initial state
-      gsap.set(items, { opacity: 0, y: 80, filter: "blur(12px)" });
+      // Minimal initial state: slight offset, no heavy blur filters
+      gsap.set(items, { opacity: 0, y: 15 });
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top 88%",
-        end: "bottom 12%",
-        onEnter: () => {
-          gsap.to(items, {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.18,
-            overwrite: "auto"
-          });
-        },
-        onLeave: () => {
-          gsap.to(items, {
-            opacity: 0,
-            y: -80,
-            filter: "blur(12px)",
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.18,
-            overwrite: "auto"
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(items, {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.18,
-            overwrite: "auto"
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(items, {
-            opacity: 0,
-            y: 80,
-            filter: "blur(12px)",
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.18,
-            overwrite: "auto"
-          });
+      gsap.to(items, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none", // Animate once on scroll down, do not animate out on scroll up
         }
       });
     }, containerRef);

@@ -69,15 +69,15 @@ export default function Hero() {
       </video>
 
       {/* Dark Mask Overlay (Hero section only) */}
-      <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/45 to-black/65 z-10 pointer-events-none" />
 
       {/* 1. Left Vertical Socials Bar */}
       <div className="absolute left-[3vw] bottom-[8vh] flex flex-col gap-4 items-center z-30 hidden md:flex">
         <div className="w-[1px] h-12 bg-white/20 mb-2"></div>
-        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial"><FacebookIcon /></a>
-        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial"><InstagramIcon /></a>
-        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial"><TwitterIcon /></a>
-        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial"><YoutubeIcon /></a>
+        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial hover:-translate-y-1"><FacebookIcon /></a>
+        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial hover:-translate-y-1"><InstagramIcon /></a>
+        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial hover:-translate-y-1"><TwitterIcon /></a>
+        <a href="#" className="text-white/60 hover:text-brij-accent transition-editorial hover:-translate-y-1"><YoutubeIcon /></a>
       </div>
 
       {/* 2. Right Vertical Slide Index Indicator */}
@@ -100,30 +100,30 @@ export default function Hero() {
 
       {/* Content wrapper */}
       <div className="relative w-full max-w-none text-left text-white z-20">
-        <div className="max-w-[700px] space-y-4">
-          <span className="hero-label text-[10px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
-            Preserving Legacy, Nurturing Futures
+        <div className="max-w-[750px] space-y-6">
+          <span className="hero-label text-[11px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
+            Together, We Can Create Lasting Change.
           </span>
           <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-sora font-semibold tracking-tight leading-tight text-white">
-            Preserving Culture.<br />
-            Empowering Communities.<br />
-            Inspiring <span className="text-brij-accent">Change.</span>
+            <span className="hero-line block">Building a Better Tomorrow</span>
+            <span className="hero-line block">Through Compassion, Service &</span>
+            <span className="hero-line block">Sustainable <span className="text-brij-accent">Development</span></span>
           </h1>
-          <p className="hero-paragraph text-[12px] md:text-[13px] font-light text-white/70 leading-relaxed tracking-wide font-inter">
-            Brij Bhoomi Foundation is committed to preserving our rich heritage, empowering people, and building a stronger, more inclusive society for future generations.
+          <p className="hero-paragraph text-xs md:text-[13.5px] lg:text-sm font-light text-white/75 leading-relaxed tracking-wide font-inter max-w-2xl">
+            Brij Bhoomi Foundation is a non-profit organization committed to creating meaningful social impact through education, healthcare, environmental conservation, women empowerment, rural development, humanitarian assistance, and community welfare. We believe that lasting change begins with collective action, and our mission is to empower lives while building stronger, healthier, and more sustainable communities.
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-4">
             <a
-              href="#about"
-              className="flex items-center gap-1.5 px-6 py-2.5 bg-brij-accent text-white text-[10px] font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-editorial rounded-sm w-full sm:w-auto text-center"
+              href="#volunteer-cta"
+              className="flex items-center justify-center gap-2 px-7 py-3.5 bg-brij-accent text-white text-[11px] font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] rounded-[3px] shadow-md hover:shadow-xl w-full sm:w-auto text-center"
             >
-              Explore Our Work <ArrowRight size={12} />
+              Become a Volunteer <ArrowRight size={12} />
             </a>
             <a
               href="#donate-cta"
-              className="px-6 py-2.5 bg-transparent border border-white text-white text-[10px] font-semibold uppercase tracking-wider hover:text-brij-accent hover:border-brij-accent transition-editorial rounded-sm w-full sm:w-auto text-center"
+              className="px-7 py-3.5 bg-transparent border border-white/80 text-white text-[11px] font-semibold uppercase tracking-widest hover:text-black hover:bg-white transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] rounded-[3px] w-full sm:w-auto text-center"
             >
-              Donate Now ♡
+              Donate Now
             </a>
           </div>
         </div>

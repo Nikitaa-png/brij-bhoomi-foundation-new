@@ -20,10 +20,13 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Mission", href: "#mission" },
     { name: "Programs", href: "#programs" },
+    { name: "CSR", href: "#csr-partnership" },
     { name: "Empowerment", href: "#empowerment" },
     { name: "Impact", href: "#impact" },
     { name: "Gallery", href: "#gallery" },
-    { name: "Volunteer", href: "#volunteer" },
+    { name: "Events", href: "#events-campaigns" },
+    { name: "Volunteer", href: "#volunteer-cta" },
+    { name: "FAQ", href: "#faq" },
     { name: "Donate", href: "#donate-cta" },
     { name: "Contact", href: "#contact" },
   ];
@@ -31,15 +34,15 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black text-white border-b border-white/10 py-3 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md text-white border-b border-white/10 py-3.5 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Brand Logo */}
-        <a href="#hero" className="flex flex-col">
-          <span className="text-lg md:text-xl font-sora font-semibold tracking-tight text-white leading-none">
+        <a href="#hero" className="flex flex-col group">
+          <span className="text-lg md:text-xl font-sora font-semibold tracking-tight text-white leading-none transition-colors duration-300 group-hover:text-brij-accent">
             BRIJ BHOOMI
           </span>
-          <span className="text-[8px] uppercase tracking-[0.3em] text-brij-accent font-medium mt-0.5">
+          <span className="text-[8px] uppercase tracking-[0.3em] text-brij-accent font-medium mt-0.5 transition-colors duration-300 group-hover:text-white">
             Foundation
           </span>
         </a>
@@ -50,7 +53,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-xs font-medium tracking-wide text-white/80 hover:text-brij-accent transition-editorial"
+              className="link-premium text-xs font-medium tracking-wide text-white/80 hover:text-brij-accent transition-editorial"
             >
               {link.name}
             </a>
@@ -61,7 +64,7 @@ export default function Navbar() {
         <div className="hidden xl:block">
           <a
             href="#donate-cta"
-            className="inline-block px-5 py-2 bg-white text-black text-[10px] font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-editorial"
+            className="inline-block px-5 py-2 bg-white text-black text-[10px] font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] rounded-[2px]"
           >
             Donate Now
           </a>
@@ -70,7 +73,7 @@ export default function Navbar() {
         {/* Mobile Toggle Menu */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="xl:hidden text-white focus:outline-none"
+          className="xl:hidden text-white focus:outline-none p-1 hover:text-brij-accent transition-colors"
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -79,26 +82,26 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`xl:hidden fixed inset-0 top-[52px] w-full bg-black border-t border-white/10 transition-all duration-500 ease-in-out z-40 ${
+        className={`xl:hidden fixed inset-0 top-[56px] w-full h-[calc(100vh-56px)] bg-black/95 backdrop-blur-md border-t border-white/10 transition-all duration-500 ease-in-out z-40 ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="px-6 py-8 flex flex-col space-y-5">
+        <div className="px-6 py-8 flex flex-col space-y-5 overflow-y-auto h-full pb-20">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-base font-sora font-medium text-white hover:text-brij-accent transition-editorial"
+              className="text-base font-sora font-medium text-white/90 hover:text-brij-accent transition-editorial border-b border-white/5 pb-2"
             >
               {link.name}
             </a>
           ))}
-          <div className="pt-4 border-t border-white/10">
+          <div className="pt-6">
             <a
               href="#donate-cta"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-6 py-3 bg-white text-brij-text text-xs font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-editorial"
+              className="block w-full text-center px-6 py-3 bg-white text-brij-text text-xs font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-all duration-300 active:scale-[0.98] rounded-[2px]"
             >
               Donate Now
             </a>

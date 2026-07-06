@@ -8,8 +8,12 @@ import WomenEmpowerment from "./components/WomenEmpowerment";
 import HowYouCanHelp from "./components/HowYouCanHelp";
 import Impact from "./components/Impact";
 import Gallery from "./components/Gallery";
+import Events from "./components/Events";
+import NewsBlog from "./components/NewsBlog";
+import Transparency from "./components/Transparency";
 import VolunteerCTA from "./components/VolunteerCTA";
 import DonationCTA from "./components/DonationCTA";
+import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -30,8 +34,12 @@ function App() {
         <HowYouCanHelp />
         <Impact />
         <Gallery />
+        <Events />
+        <NewsBlog />
+        <Transparency />
         <VolunteerCTA />
         <DonationCTA />
+        <FAQ />
         <Contact />
         <Footer />
       </div>
