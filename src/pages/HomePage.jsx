@@ -22,7 +22,7 @@ function SectionLabel({ text }) {
 }
 
 function SectionHeading({ children }) {
-  return <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight leading-tight mb-4 cinematic-reveal">{children}</h2>;
+  return <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight leading-tight mb-4 cinematic-reveal text-[#1f1a14]">{children}</h2>;
 }
 
 function MoreBtn({ to, label = "Learn More" }) {

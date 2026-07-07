@@ -55,7 +55,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="w-screen h-screen min-h-screen flex items-center justify-start bg-transparent relative overflow-hidden z-20 px-[8vw]">
+    <section id="hero" className="w-full h-screen min-h-screen flex items-center justify-start bg-transparent relative overflow-hidden z-20 px-[8vw] pt-[80px] md:pt-[96px]">
       
       {/* Background Video (Hero section only) */}
       <video
