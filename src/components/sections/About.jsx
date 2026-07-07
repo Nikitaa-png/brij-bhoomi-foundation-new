@@ -43,12 +43,12 @@ export default function About() {
   return (
     <>
       {/* About Page Hero */}
-      <section className="w-full h-[40vh] min-h-[320px] pt-[80px] md:pt-[96px] flex items-center justify-start bg-[#FAF7F0] relative overflow-hidden z-20 px-[8vw]">
+      <section className="w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[2.35/1] max-h-[450px] min-h-[320px] pt-[80px] md:pt-[96px] flex items-center justify-start bg-[#FAF7F0] relative overflow-hidden z-20 px-[8vw]">
         <div className="absolute inset-0 z-0">
           <img
             src="/about image/About us/IMG-20210706-WA0633.jpg"
-            alt="Historical stepwell filled with clean water at Brij Bhoomi"
-            className="w-full h-full object-cover"
+            alt="Brij Bhoomi Foundation package distribution drive"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/35 z-10 pointer-events-none" />
         </div>
@@ -103,7 +103,7 @@ export default function About() {
               </p>
 
               {/* About Us Page Image */}
-              <div className="cinematic-reveal my-6 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group h-[220px]">
+              <div className="cinematic-reveal my-6 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group aspect-[3/2] w-full">
                 <img 
                   src="/about image/About us/1 (92).JPG" 
                   alt="Community meeting under a tree in Brij village" 
@@ -126,7 +126,7 @@ export default function About() {
                 </p>
 
                 {/* Our Story Page Image */}
-                <div className="cinematic-reveal my-6 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group h-[220px]">
+                <div className="cinematic-reveal my-6 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group aspect-[4/3] w-full">
                   <img 
                     src="/about image/About us/IMG_20180621_081702.jpg" 
                     alt="Volunteers clearing historical stepwell (Kund) debris" 
@@ -151,20 +151,20 @@ export default function About() {
 
               {/* Photo mosaic grid */}
               <div className="cinematic-reveal grid grid-cols-3 gap-3 w-full">
-                <div className="col-span-2 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-52">
-                  <img src="/about image/About us/IMG-20210706-WA0633.jpg" alt="Brij Bhoomi Foundation community event" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div className="col-span-2 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 aspect-[2/1] w-full">
+                  <img src="/about image/About us/IMG-20170120-WA0233.jpg" alt="Community event with volunteers and local women under the Shakti Ko Pranam banner" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" loading="lazy" />
                 </div>
-                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-52">
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 aspect-[1/1] w-full">
                   <img src="/about image/About us/IMG_8593.JPG" alt="Stepwell restoration work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
                 </div>
-                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 aspect-[4/3] w-full">
                   <img src="/about image/About us/IMG20180911113315.jpg" alt="Women vocational training workshop" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
                 </div>
-                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 aspect-[4/3] w-full">
                   <img src="/about image/About us/IMG-20210803-WA0511.jpg" alt="Tree plantation drive" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
                 </div>
-                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
-                  <img src="/about image/About us/IMG_20171224_130312.jpg" alt="Community gathering and awareness program" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 aspect-[4/3] w-full">
+                  <img src="/about image/About us/IMG_20171224_130312.jpg" alt="Community gathering and awareness program" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" loading="lazy" />
                 </div>
               </div>
 
@@ -241,7 +241,7 @@ export default function About() {
               }
             ].map((area, idx) => (
               <div key={idx} className="cinematic-reveal premium-card overflow-hidden hover:shadow-lg transition-all duration-500 flex flex-col justify-between">
-                <div className="h-44 overflow-hidden relative border-b border-[#D8C6A8]/20 bg-[#F2E8D6]/35">
+                <div className="w-full aspect-[4/3] overflow-hidden relative border-b border-[#D8C6A8]/20 bg-[#F2E8D6]/35">
                   <img
                     src={area.img}
                     alt={area.alt}
@@ -291,7 +291,7 @@ export default function About() {
               <p className="cinematic-reveal text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
                 Every donation, every volunteer, every partnership, and every project contributes to creating a stronger society. We remain committed to delivering measurable impact while ensuring transparency, accountability, and responsible utilization of every resource entrusted to us.
               </p>
-              <div className="cinematic-reveal overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group h-[260px] w-full">
+              <div className="cinematic-reveal overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group aspect-[3/2] w-full">
                 <img 
                   src="/about image/About us/IMG_20170128_104417.jpg" 
                   alt="Women gathered in a circle discussing community welfare" 
@@ -314,7 +314,7 @@ export default function About() {
               <p className="cinematic-reveal text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
                 Whether you are an individual, volunteer, donor, corporate organization, educational institution, or government body, your contribution can help transform lives. Together, we can create opportunities, empower communities, and build a brighter future for generations to come.
               </p>
-              <div className="cinematic-reveal overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group h-[260px] w-full">
+              <div className="cinematic-reveal overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 shadow-sm relative group aspect-[3/2] w-full">
                 <img 
                   src="/about image/About us/IMG_8668.JPG" 
                   alt="Brij Bhoomi Foundation volunteers and community members celebrating stepwell restoration" 

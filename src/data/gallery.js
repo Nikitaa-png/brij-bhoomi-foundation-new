@@ -10,55 +10,55 @@ export const tabs = [
 
 export const images = [
   {
-    src: "/children_education.png",
+    src: "/cover-images/20190918_091312.jpg",
     title: "Rural Classroom Learning",
     category: "EDUCATION",
     gridClass: "lg:col-span-4 h-[240px]",
   },
   {
-    src: "/healthcare.png",
+    src: "/cover-images/20191118_134141.jpg",
     title: "Doctor Treating Villagers",
     category: "HEALTHCARE",
     gridClass: "lg:col-span-4 h-[240px]",
   },
   {
-    src: "/artisan_woman.png",
+    src: "/cover-images/20190920_071354.jpg",
     title: "Self-Reliance Sewing Center",
     category: "WOMEN EMPOWERMENT",
     gridClass: "lg:col-span-4 h-[240px]",
   },
   {
-    src: "/hands_holding_plant.png",
+    src: "/cover-images/20200621_071951.jpg",
     title: "Eco sapling planting",
     category: "ENVIRONMENT",
     gridClass: "lg:col-span-3 h-[300px]",
   },
   {
-    src: "/eco_volunteers.png",
+    src: "/cover-images/20191106_092229.jpg",
     title: "Afforestation Campaigns",
     category: "ENVIRONMENT",
     gridClass: "lg:col-span-6 h-[300px]",
   },
   {
-    src: "/brij_kund.png",
+    src: "/cover-images/20191212_203806.jpg",
     title: "Kund Restoration & Water",
     category: "RURAL DEVELOPMENT",
     gridClass: "lg:col-span-3 h-[300px]",
   },
   {
-    src: "/community_workshop.png",
+    src: "/cover-images/20200224_212121.jpg",
     title: "Village Health Consultations",
     category: "HEALTHCARE",
     gridClass: "lg:col-span-4 h-[240px]",
   },
   {
-    src: "/sanjhi_art.png",
+    src: "/cover-images/PhotoGrid_1_20171016065518.jpg",
     title: "Empowering Rural Women Artisans",
     category: "WOMEN EMPOWERMENT",
     gridClass: "lg:col-span-4 h-[240px]",
   },
   {
-    src: "/handshake_partner.png",
+    src: "/cover-images/20200413_101216.jpg",
     title: "Relief Material Distribution Drive",
     category: "EVENTS",
     gridClass: "lg:col-span-4 h-[240px]",
@@ -66,10 +66,10 @@ export const images = [
 ];
 
 export const galleryPreviews = [
-  { src: "/children_education.png", title: "Rural Education" },
-  { src: "/artisan_woman.png",      title: "Women Artisans" },
-  { src: "/eco_volunteers.png",     title: "Tree Plantation" },
-  { src: "/brij_kund.png",          title: "Kund Restoration" },
-  { src: "/community_workshop.png", title: "Health Camp" },
-  { src: "/sanjhi_art.png",         title: "Sanjhi Art" },
+  { src: "/cover-images/20190918_091312.jpg", title: "Rural Education" },
+  { src: "/cover-images/20190920_071354.jpg", title: "Women Artisans" },
+  { src: "/cover-images/20191106_092229.jpg", title: "Tree Plantation" },
+  { src: "/cover-images/20191212_203806.jpg", title: "Kund Restoration" },
+  { src: "/cover-images/20191118_134141.jpg", title: "Health Camp" },
+  { src: "/cover-images/20200413_101216.jpg", title: "Sanjhi Art" },
 ];
