@@ -138,7 +138,7 @@ function GalleryPreview() {
       <SectionHeading>Glimpses of Our Work</SectionHeading>
       <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
         {galleryPreviews.map((img) => (
-          <div key={img.title} className="group relative overflow-hidden rounded-[12px] h-36 border border-[#D8C6A8]/50">
+          <div key={img.title} className="group relative overflow-hidden rounded-[12px] aspect-square border border-[#D8C6A8]/50">
             <img src={`${img.src}?v=2`} alt={img.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-2">
               <span className="text-[9px] text-white font-sora font-semibold uppercase tracking-wider">{img.title}</span>

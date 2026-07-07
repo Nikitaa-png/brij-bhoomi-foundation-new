@@ -100,7 +100,7 @@ export default function Gallery() {
             <div
               key={idx}
               className={`cinematic-reveal gsap-gallery-item relative overflow-hidden bg-black/5 border border-[#1f1a14]/10 rounded-[16px] shadow-sm ${
-                isFiltered ? "h-[280px] w-full" : img.gridClass
+                isFiltered ? "aspect-square w-full" : img.gridClass
               } w-full group hover:shadow-md transition-all duration-500`}
             >
               {/* Image */}
