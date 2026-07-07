@@ -146,8 +146,30 @@ export default function About() {
               </div>
             </div>
             
-            {/* Right Column: 6 Pillars Row */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:mt-4">
+            {/* Right Column: Photo Mosaic + 6 Pillars */}
+            <div className="lg:col-span-7 space-y-6 w-full lg:mt-4">
+
+              {/* Photo mosaic grid */}
+              <div className="cinematic-reveal grid grid-cols-3 gap-3 w-full">
+                <div className="col-span-2 overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-52">
+                  <img src="/about image/About us/IMG-20210706-WA0633.jpg" alt="Brij Bhoomi Foundation community event" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-52">
+                  <img src="/about image/About us/IMG_8593.JPG" alt="Stepwell restoration work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
+                  <img src="/about image/About us/IMG20180911113315.jpg" alt="Women vocational training workshop" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
+                  <img src="/about image/About us/IMG-20210803-WA0511.jpg" alt="Tree plantation drive" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="overflow-hidden rounded-[12px] border border-[#D8C6A8]/50 h-40">
+                  <img src="/about image/About us/IMG_20171224_130312.jpg" alt="Community gathering and awareness program" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+              </div>
+
+              {/* Pillars grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
               {pillars.map((pillar, idx) => (
                 <div key={idx} className="cinematic-reveal premium-card p-6 flex flex-col justify-between">
                   <div className="space-y-4">
@@ -163,6 +185,8 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+
             </div>
    
           </div>
