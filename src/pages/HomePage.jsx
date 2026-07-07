@@ -1,15 +1,33 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Heart, Users, Leaf, Home as HomeIcon, Award } from "lucide-react";
-import Hero from "../components/Hero";
+import Hero from "../components/sections/Hero";
 import { useCinematicReveal } from "../hooks/useCinematicReveal";
+import PageMeta from "../components/common/PageMeta";
+import { programCards } from "../data/programs";
+import { homeImpactStats } from "../data/impact";
+import { galleryPreviews } from "../data/gallery";
+import { eventPreviews } from "../data/events";
+import { homeBlogPreviews } from "../data/news";
+
+const getProgramIcon = (name) => {
+  switch (name) {
+    case "BookOpen": return <BookOpen size={18} className="text-brij-accent" />;
+    case "Heart":    return <Heart size={18} className="text-brij-accent" />;
+    case "Users":    return <Users size={18} className="text-brij-accent" />;
+    case "Home":     return <HomeIcon size={18} className="text-brij-accent" />;
+    case "Leaf":     return <Leaf size={18} className="text-brij-accent" />;
+    case "Award":    return <Award size={18} className="text-brij-accent" />;
+    default:         return <Award size={18} className="text-brij-accent" />;
+  }
+};
 
 // ─── Shared section wrapper ─────────────────────────────────────────────────
 function PreviewSection({ id, bg, border, children }) {
   const ref = useRef(null);
   useCinematicReveal(ref);
   return (
-    <section id={id} className={`w-screen py-20 px-[8vw] ${bg} relative z-20 border-t ${border} overflow-hidden`}>
+    <section id={id} className={`w-full py-20 px-[8vw] ${bg} relative z-20 border-t border-t-[#1f1a14]/10 overflow-hidden`}>
       <div ref={ref} className="w-full max-w-none relative z-10">{children}</div>
     </section>
   );
@@ -70,15 +88,6 @@ function MissionPreview() {
 }
 
 // ─── Programs Preview ────────────────────────────────────────────────────────
-const programCards = [
-  { icon: <BookOpen size={18} className="text-brij-accent" />, title: "Education",                img: "/children_education.png" },
-  { icon: <Heart   size={18} className="text-brij-accent" />, title: "Healthcare",               img: "/community_workshop.png" },
-  { icon: <Users   size={18} className="text-brij-accent" />, title: "Women Empowerment",        img: "/artisan_woman.png" },
-  { icon: <HomeIcon size={18} className="text-brij-accent" />,title: "Rural Development",        img: "/brij_kund.png" },
-  { icon: <Leaf    size={18} className="text-brij-accent" />, title: "Environmental Conservation",img: "/eco_volunteers.png" },
-  { icon: <Award   size={18} className="text-brij-accent" />, title: "Youth Development",        img: "/sanjhi_art.png" },
-];
-
 function ProgramsPreview() {
   return (
     <PreviewSection id="home-programs" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
@@ -91,7 +100,7 @@ function ProgramsPreview() {
               <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-3 flex items-center gap-2">
-              {p.icon}
+              {getProgramIcon(p.iconName)}
               <span className="text-[10px] font-sora font-semibold text-[#1F1F1F] leading-tight">{p.title}</span>
             </div>
           </div>
@@ -103,20 +112,13 @@ function ProgramsPreview() {
 }
 
 // ─── Impact Preview ──────────────────────────────────────────────────────────
-const impactStats = [
-  { value: "10,000+", label: "Lives Impacted" },
-  { value: "2,500+",  label: "Students Benefited" },
-  { value: "15,000+", label: "Trees Planted" },
-  { value: "1,200+",  label: "Women Empowered" },
-];
-
 function ImpactPreview() {
   return (
     <PreviewSection id="home-impact" bg="bg-[#F2E8D6]" border="border-[#D8C6A8]">
       <SectionLabel text="Our Footprint" />
       <SectionHeading>Real Impact, Real Change</SectionHeading>
       <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-        {impactStats.map((s) => (
+        {homeImpactStats.map((s) => (
           <div key={s.label} className="bg-[#FCFAF5] border border-[#D8C6A8]/70 rounded-[16px] p-6 text-center">
             <div className="text-3xl font-sora font-semibold text-[#8B6F47] mb-1">{s.value}</div>
             <div className="text-xs font-sora font-semibold text-[#2E2E2E]">{s.label}</div>
@@ -129,15 +131,6 @@ function ImpactPreview() {
 }
 
 // ─── Gallery Preview ─────────────────────────────────────────────────────────
-const galleryPreviews = [
-  { src: "/children_education.png", title: "Rural Education" },
-  { src: "/artisan_woman.png",      title: "Women Artisans" },
-  { src: "/eco_volunteers.png",     title: "Tree Plantation" },
-  { src: "/brij_kund.png",          title: "Kund Restoration" },
-  { src: "/community_workshop.png", title: "Health Camp" },
-  { src: "/sanjhi_art.png",         title: "Sanjhi Art" },
-];
-
 function GalleryPreview() {
   return (
     <PreviewSection id="home-gallery" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
@@ -159,12 +152,6 @@ function GalleryPreview() {
 }
 
 // ─── Events Preview ──────────────────────────────────────────────────────────
-const eventPreviews = [
-  { title: "🌳 Mega Tree Plantation Drive",    desc: "Join hundreds of volunteers to plant trees and promote environmental sustainability." },
-  { title: "🩺 Free Community Health Camp",    desc: "Free health check-ups, consultations, and preventive screenings for underserved communities." },
-  { title: "📚 Back-to-School Education Drive", desc: "Support children with school kits, books, and digital learning resources." },
-];
-
 function EventsPreview() {
   return (
     <PreviewSection id="home-events" bg="bg-[#F2E8D6]" border="border-[#D8C6A8]">
@@ -184,19 +171,13 @@ function EventsPreview() {
 }
 
 // ─── Blog Preview ────────────────────────────────────────────────────────────
-const blogPreviews = [
-  { title: "New Education Initiative Launched",          date: "July 5, 2026",  img: "/children_education.png", cat: "Education" },
-  { title: "Free Healthcare Camp for Communities",       date: "June 28, 2026", img: "/community_workshop.png", cat: "Healthcare" },
-  { title: "Tree Plantation Drive for a Greener Future", date: "June 20, 2026", img: "/eco_volunteers.png",     cat: "Environment" },
-];
-
 function BlogPreview() {
   return (
     <PreviewSection id="home-news" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
       <SectionLabel text="News & Blog" />
       <SectionHeading>Latest Stories</SectionHeading>
       <div className="cinematic-reveal grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {blogPreviews.map((a) => (
+        {homeBlogPreviews.map((a) => (
           <div key={a.title} className="bg-white border border-[#D8C6A8]/70 rounded-[16px] overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-500">
             <div className="h-44 overflow-hidden relative">
               <img src={a.img} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -247,7 +228,7 @@ function FinalCTA() {
   const ref = useRef(null);
   useCinematicReveal(ref);
   return (
-    <section className="w-screen py-20 px-[8vw] bg-[#8B6F47] relative z-20 text-white text-center overflow-hidden">
+    <section className="w-full py-20 px-[8vw] bg-[#8B6F47] relative z-20 text-white text-center overflow-hidden">
       <div ref={ref} className="max-w-3xl mx-auto space-y-6">
         <span className="cinematic-reveal text-[11px] uppercase tracking-[0.3em] text-white/80 font-sora font-semibold block">Together We Create Change</span>
         <h2 className="cinematic-reveal text-3xl md:text-4xl font-sora font-semibold tracking-tight leading-tight">Building a Better Tomorrow, Together</h2>
@@ -268,6 +249,10 @@ function FinalCTA() {
 export default function HomePage() {
   return (
     <>
+      <PageMeta
+        title="Home"
+        description="Brij Bhoomi Foundation — a registered NGO in Vrindavan, Mathura creating sustainable social impact through education, healthcare, women empowerment, and environmental conservation across India."
+      />
       <Hero />
       <AboutPreview />
       <MissionPreview />
