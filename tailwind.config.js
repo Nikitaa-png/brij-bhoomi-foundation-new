@@ -20,6 +20,12 @@ export default {
         sora: ["'Sora'", "sans-serif"],
         inter: ["'Inter'", "sans-serif"],
       },
+      fontWeight: {
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
+      },
     },
   },
   plugins: [],

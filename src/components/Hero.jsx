@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 
@@ -113,18 +114,18 @@ export default function Hero() {
             Brij Bhoomi Foundation is a non-profit organization committed to creating meaningful social impact through education, healthcare, environmental conservation, women empowerment, rural development, humanitarian assistance, and community welfare. We believe that lasting change begins with collective action, and our mission is to empower lives while building stronger, healthier, and more sustainable communities.
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-4">
-            <a
-              href="#volunteer-cta"
+            <Link
+              to="/volunteer"
               className="flex items-center justify-center gap-2 px-7 py-3.5 bg-brij-accent text-white text-[11px] font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] rounded-[3px] shadow-md hover:shadow-xl w-full sm:w-auto text-center"
             >
               Become a Volunteer <ArrowRight size={12} />
-            </a>
-            <a
-              href="#donate-cta"
+            </Link>
+            <Link
+              to="/donate"
               className="px-7 py-3.5 bg-transparent border border-white/80 text-white text-[11px] font-semibold uppercase tracking-widest hover:text-black hover:bg-white transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] rounded-[3px] w-full sm:w-auto text-center"
             >
               Donate Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

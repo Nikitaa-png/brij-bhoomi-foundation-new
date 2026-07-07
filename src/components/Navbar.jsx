@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { NavLink, Link } from "react-router-dom";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
 
@@ -7,7 +8,6 @@ export default function Navbar() {
   const navRef = useRef(null);
 
   useEffect(() => {
-    // GSAP slide down animation on load
     gsap.fromTo(
       navRef.current,
       { y: -100, opacity: 0 },
@@ -16,20 +16,23 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Mission", href: "#mission" },
-    { name: "Programs", href: "#programs" },
-    { name: "CSR", href: "#csr-partnership" },
-    { name: "Empowerment", href: "#empowerment" },
-    { name: "Impact", href: "#impact" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Events", href: "#events-campaigns" },
-    { name: "Volunteer", href: "#volunteer-cta" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Donate", href: "#donate-cta" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home",         to: "/" },
+    { name: "About",        to: "/about" },
+    { name: "Mission",      to: "/vision-mission" },
+    { name: "Programs",     to: "/programs" },
+    { name: "Impact",       to: "/impact" },
+    { name: "Gallery",      to: "/gallery" },
+    { name: "Events",       to: "/events" },
+    { name: "News",         to: "/news" },
+    { name: "CSR",          to: "/csr-partnership" },
+    { name: "Volunteer",    to: "/volunteer" },
+    { name: "Transparency", to: "/transparency" },
+    { name: "FAQs",         to: "/faqs" },
+    { name: "Contact",      to: "/contact" },
   ];
+
+  const activeCls = "text-brij-accent";
+  const baseCls   = "link-premium text-xs font-medium tracking-wide text-white/80 hover:text-brij-accent transition-editorial";
 
   return (
     <header
@@ -37,40 +40,44 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md text-white border-b border-white/10 py-3.5 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+
         {/* Brand Logo */}
-        <a href="#hero" className="flex flex-col group">
+        <Link to="/" className="flex flex-col group">
           <span className="text-lg md:text-xl font-sora font-semibold tracking-tight text-white leading-none transition-colors duration-300 group-hover:text-brij-accent">
             BRIJ BHOOMI
           </span>
           <span className="text-[8px] uppercase tracking-[0.3em] text-brij-accent font-medium mt-0.5 transition-colors duration-300 group-hover:text-white">
             Foundation
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Nav */}
         <nav className="hidden xl:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
-              className="link-premium text-xs font-medium tracking-wide text-white/80 hover:text-brij-accent transition-editorial"
+              to={link.to}
+              end={link.to === "/"}
+              className={({ isActive }) =>
+                `${baseCls} ${isActive ? activeCls : ""}`
+              }
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <div className="hidden xl:block">
-          <a
-            href="#donate-cta"
+          <Link
+            to="/donate"
             className="inline-block px-5 py-2 bg-white text-black text-[10px] font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] rounded-[2px]"
           >
             Donate Now
-          </a>
+          </Link>
         </div>
 
-        {/* Mobile Toggle Menu */}
+        {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="xl:hidden text-white focus:outline-none p-1 hover:text-brij-accent transition-colors"
@@ -80,7 +87,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       <div
         className={`xl:hidden fixed inset-0 top-[56px] w-full h-[calc(100vh-56px)] bg-black/95 backdrop-blur-md border-t border-white/10 transition-all duration-500 ease-in-out z-40 ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
@@ -88,23 +95,28 @@ export default function Navbar() {
       >
         <div className="px-6 py-8 flex flex-col space-y-5 overflow-y-auto h-full pb-20">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
+              to={link.to}
+              end={link.to === "/"}
               onClick={() => setIsOpen(false)}
-              className="text-base font-sora font-medium text-white/90 hover:text-brij-accent transition-editorial border-b border-white/5 pb-2"
+              className={({ isActive }) =>
+                `text-base font-sora font-medium hover:text-brij-accent transition-editorial border-b border-white/5 pb-2 ${
+                  isActive ? "text-brij-accent" : "text-white/90"
+                }`
+              }
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
           <div className="pt-6">
-            <a
-              href="#donate-cta"
+            <Link
+              to="/donate"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-6 py-3 bg-white text-brij-text text-xs font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-all duration-300 active:scale-[0.98] rounded-[2px]"
+              className="block w-full text-center px-6 py-3 bg-white text-black text-xs font-semibold uppercase tracking-wider border border-white hover:bg-transparent hover:text-white transition-all duration-300 active:scale-[0.98] rounded-[2px]"
             >
               Donate Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

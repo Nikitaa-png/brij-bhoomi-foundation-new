@@ -1,50 +1,47 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Mission from "./components/Mission";
-import Programs from "./components/Programs";
-import WomenEmpowerment from "./components/WomenEmpowerment";
-import HowYouCanHelp from "./components/HowYouCanHelp";
-import Impact from "./components/Impact";
-import Gallery from "./components/Gallery";
-import Events from "./components/Events";
-import NewsBlog from "./components/NewsBlog";
-import Transparency from "./components/Transparency";
-import VolunteerCTA from "./components/VolunteerCTA";
-import DonationCTA from "./components/DonationCTA";
-import FAQ from "./components/FAQ";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import Layout            from "./components/Layout";
+import HomePage          from "./pages/HomePage";
+import AboutPage         from "./pages/AboutPage";
+import VisionMissionPage from "./pages/VisionMissionPage";
+import ImpactPage        from "./pages/ImpactPage";
+import ProgramsPage      from "./pages/ProgramsPage";
+import DonatePage        from "./pages/DonatePage";
+import VolunteerPage     from "./pages/VolunteerPage";
+import CSRPage           from "./pages/CSRPage";
+import EventsPage        from "./pages/EventsPage";
+import GalleryPage       from "./pages/GalleryPage";
+import NewsPage          from "./pages/NewsPage";
+import TransparencyPage  from "./pages/TransparencyPage";
+import FAQsPage          from "./pages/FAQsPage";
+import ContactPage       from "./pages/ContactPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage         from "./pages/TermsPage";
+
+export default function App() {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen text-white overflow-x-hidden relative">
-      
-      {/* Navbar stays fixed above everything (z-50) */}
-      <Navbar />
-
-      {/* Page Content wrapper in normal vertical flow (z-20) */}
-      <div className="relative z-20 w-full">
-        <Hero />
-        <About />
-        <Mission />
-        <Programs />
-        <WomenEmpowerment />
-        <HowYouCanHelp />
-        <Impact />
-        <Gallery />
-        <Events />
-        <NewsBlog />
-        <Transparency />
-        <VolunteerCTA />
-        <DonationCTA />
-        <FAQ />
-        <Contact />
-        <Footer />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index                    element={<HomePage />} />
+          <Route path="/about"              element={<AboutPage />} />
+          <Route path="/vision-mission"     element={<VisionMissionPage />} />
+          <Route path="/impact"             element={<ImpactPage />} />
+          <Route path="/programs"           element={<ProgramsPage />} />
+          <Route path="/donate"             element={<DonatePage />} />
+          <Route path="/volunteer"          element={<VolunteerPage />} />
+          <Route path="/csr-partnership"    element={<CSRPage />} />
+          <Route path="/events"             element={<EventsPage />} />
+          <Route path="/gallery"            element={<GalleryPage />} />
+          <Route path="/news"               element={<NewsPage />} />
+          <Route path="/transparency"       element={<TransparencyPage />} />
+          <Route path="/faqs"               element={<FAQsPage />} />
+          <Route path="/contact"            element={<ContactPage />} />
+          <Route path="/privacy-policy"     element={<PrivacyPolicyPage />} />
+          <Route path="/terms-and-conditions" element={<TermsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
