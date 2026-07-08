@@ -17,16 +17,17 @@ export default function Navbar() {
   }, []);
 
   const activeCls = "text-brij-accent after:scale-x-100 after:origin-left";
-  const baseCls   = "link-premium text-[10px] 2xl:text-[11px] font-semibold uppercase tracking-widest text-white/80 hover:text-brij-accent transition-editorial whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black";
+  const baseCls   = "link-premium text-[9.5px] 2xl:text-[10px] font-bold uppercase tracking-[0.12em] text-white/85 hover:text-brij-accent transition-editorial whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black";
 
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md text-white border-b border-white/10 h-[76px] transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md text-white border-b border-white/10 h-[76px] transition-all duration-300"
     >
-      <div className="max-w-[95vw] 2xl:max-w-7xl mx-auto px-4 md:px-8 h-full flex justify-between items-center relative">
+      {/* Full width container to give maximum horizontal gap */}
+      <div className="w-full max-w-full px-6 md:px-12 h-full flex justify-between items-center relative">
 
-        {/* Brand Logo - Reduced gap and shrink-0 to prevent wrap */}
+        {/* Brand Logo - Compact with minimal gaps */}
         <Link 
           to="/" 
           className="flex flex-col group shrink-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent focus-visible:ring-offset-1 rounded-sm"
@@ -39,8 +40,8 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Nav - High readability, single-line links */}
-        <nav className="hidden xl:flex items-center gap-x-4 2xl:gap-x-5 h-full">
+        {/* Desktop Nav - Clean, spacious, with balanced gaps */}
+        <nav className="hidden xl:flex items-center gap-x-3.5 2xl:gap-x-4.5 h-full px-4">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -55,34 +56,33 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Buttons - Equal spacing, reduced heights, balanced outline style */}
-        <div className="hidden xl:flex items-center gap-3 shrink-0">
+        {/* Action Buttons - Compact padding and equal spacing */}
+        <div className="hidden xl:flex items-center gap-2.5 shrink-0">
           <Link
-            to="/volunteer-portal"
-            className="px-3.5 h-[34px] flex items-center justify-center text-[9px] font-bold uppercase tracking-widest border border-white/25 hover:border-white hover:text-white text-white/80 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
+            to="/volunteer/login"
+            className="px-2.5 h-8 flex items-center justify-center text-[8px] 2xl:text-[8.5px] font-bold uppercase tracking-[0.12em] border border-white/20 hover:border-white hover:text-white text-white/80 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
           >
             Volunteer Portal
           </Link>
           <Link
-            to="/admin"
-            className="px-3.5 h-[34px] flex items-center justify-center text-[9px] font-bold uppercase tracking-widest border border-white/25 hover:border-white hover:text-white text-white/80 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
+            to="/admin/login"
+            className="px-2.5 h-8 flex items-center justify-center text-[8px] 2xl:text-[8.5px] font-bold uppercase tracking-[0.12em] border border-white/20 hover:border-white hover:text-white text-white/80 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
           >
             Admin Portal
           </Link>
           <Link
             to="/donate"
-            className="bg-white text-black border border-white hover:bg-transparent hover:text-white px-5 h-[34px] flex items-center justify-center text-[9px] font-bold uppercase tracking-widest transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
+            className="bg-white text-black border border-white hover:bg-transparent hover:text-white px-4 h-8 flex items-center justify-center text-[8px] 2xl:text-[8.5px] font-bold uppercase tracking-[0.12em] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
           >
             Donate Now
           </Link>
         </div>
 
-        {/* Tablet & Mobile Right actions */}
+        {/* Tablet & Mobile Actions */}
         <div className="flex items-center gap-4 xl:hidden shrink-0">
-          {/* Donate button visible on Tablet screen size */}
           <Link
             to="/donate"
-            className="hidden md:inline-flex bg-white text-black border border-white hover:bg-transparent hover:text-white px-4 h-[32px] items-center justify-center text-[9px] font-bold uppercase tracking-widest transition-all duration-300 rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
+            className="hidden md:inline-flex bg-white text-black border border-white hover:bg-transparent hover:text-white px-4 h-[30px] items-center justify-center text-[8px] font-bold uppercase tracking-[0.12em] transition-all duration-300 rounded-[2px] font-inter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brij-accent"
           >
             Donate Now
           </Link>
@@ -120,17 +120,16 @@ export default function Navbar() {
             </NavLink>
           ))}
           
-          {/* Action buttons inside mobile menu drawer */}
           <div className="pt-6 flex flex-col gap-3">
             <Link
-              to="/volunteer-portal"
+              to="/volunteer/login"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center py-3 bg-transparent text-white text-xs font-bold uppercase tracking-widest border border-white/20 hover:border-brij-accent hover:text-brij-accent transition-all duration-300 rounded-[2px] font-inter focus-visible:outline-none"
             >
               Volunteer Portal
             </Link>
             <Link
-              to="/admin"
+              to="/admin/login"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center py-3 bg-transparent text-white text-xs font-bold uppercase tracking-widest border border-white/20 hover:border-brij-accent hover:text-brij-accent transition-all duration-300 rounded-[2px] font-inter focus-visible:outline-none"
             >

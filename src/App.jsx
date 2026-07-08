@@ -19,6 +19,11 @@ import ContactPage       from "./pages/ContactPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsPage         from "./pages/TermsPage";
 
+// Route Protection & Login Pages
+import ProtectedRoute   from "./components/common/ProtectedRoute";
+import AdminLogin       from "./pages/admin/Login";
+import VolunteerLogin   from "./pages/volunteer/Login";
+
 // Admin Dashboard Components
 import AdminLayout      from "./components/layout/AdminLayout";
 import AdminOverview    from "./pages/admin/Overview";
@@ -66,32 +71,39 @@ export default function App() {
           <Route path="/terms-and-conditions" element={<TermsPage />} />
         </Route>
 
-        {/* Admin Dashboard decoupled routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminOverview />} />
-          <Route path="programs" element={<AdminPrograms />} />
-          <Route path="volunteers" element={<AdminVolunteers />} />
-          <Route path="donations" element={<AdminDonations />} />
-          <Route path="events" element={<AdminEvents />} />
-          <Route path="gallery" element={<AdminGallery />} />
-          <Route path="news" element={<AdminBlog />} />
-          <Route path="messages" element={<AdminMessages />} />
-          <Route path="reports" element={<AdminReports />} />
-          <Route path="settings" element={<AdminSettings />} />
+        {/* Dashboard Login Pages */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/volunteer/login" element={<VolunteerLogin />} />
+
+        {/* Admin Dashboard Protected Routes */}
+        <Route element={<ProtectedRoute portal="admin" />}>
+          <Route path="/admin/dashboard" element={<AdminLayout />}>
+            <Route index element={<AdminOverview />} />
+            <Route path="programs" element={<AdminPrograms />} />
+            <Route path="volunteers" element={<AdminVolunteers />} />
+            <Route path="donations" element={<AdminDonations />} />
+            <Route path="events" element={<AdminEvents />} />
+            <Route path="gallery" element={<AdminGallery />} />
+            <Route path="news" element={<AdminBlog />} />
+            <Route path="messages" element={<AdminMessages />} />
+            <Route path="reports" element={<AdminReports />} />
+            <Route path="settings" element={<AdminSettings />} />
+          </Route>
         </Route>
 
-        {/* Volunteer Dashboard decoupled routes */}
-        <Route path="/volunteer-portal" element={<VolunteerLayout />}>
-          <Route index element={<VolunteerHome />} />
-          <Route path="profile" element={<VolunteerProfile />} />
-          <Route path="activities" element={<VolunteerActivities />} />
-          <Route path="certificates" element={<VolunteerCertificates />} />
-          <Route path="events" element={<VolunteerEvents />} />
-          <Route path="announcements" element={<VolunteerAnnouncements />} />
-          <Route path="contact" element={<VolunteerContact />} />
+        {/* Volunteer Dashboard Protected Routes */}
+        <Route element={<ProtectedRoute portal="volunteer" />}>
+          <Route path="/volunteer/dashboard" element={<VolunteerLayout />}>
+            <Route index element={<VolunteerHome />} />
+            <Route path="profile" element={<VolunteerProfile />} />
+            <Route path="activities" element={<VolunteerActivities />} />
+            <Route path="certificates" element={<VolunteerCertificates />} />
+            <Route path="events" element={<VolunteerEvents />} />
+            <Route path="announcements" element={<VolunteerAnnouncements />} />
+            <Route path="contact" element={<VolunteerContact />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
   );
 }
-

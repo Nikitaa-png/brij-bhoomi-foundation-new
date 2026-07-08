@@ -95,12 +95,12 @@ export default function Footer() {
             <h4 className="text-[9px] font-semibold text-white uppercase tracking-wider mb-2 font-sora pt-2 border-t border-white/5">Portals</h4>
             <ul className="flex gap-4">
               <li>
-                <Link to="/admin" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
+                <Link to="/admin/login" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
                   Admin Portal
                 </Link>
               </li>
               <li>
-                <Link to="/volunteer-portal" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
+                <Link to="/volunteer/login" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
                   Volunteer Portal
                 </Link>
               </li>

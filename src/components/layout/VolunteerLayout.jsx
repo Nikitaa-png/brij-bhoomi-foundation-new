@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   Home,
   User,
@@ -19,6 +19,7 @@ export default function VolunteerLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,14 +27,19 @@ export default function VolunteerLayout() {
   }, [pathname]);
 
   const menuItems = [
-    { name: "Home", to: "/volunteer-portal", icon: Home },
-    { name: "My Profile", to: "/volunteer-portal/profile", icon: User },
-    { name: "My Activities", to: "/volunteer-portal/activities", icon: Briefcase },
-    { name: "Certificates", to: "/volunteer-portal/certificates", icon: Award },
-    { name: "Events", to: "/volunteer-portal/events", icon: Calendar },
-    { name: "Announcements", to: "/volunteer-portal/announcements", icon: Megaphone },
-    { name: "Contact Coordinator", to: "/volunteer-portal/contact", icon: Mail },
+    { name: "Home", to: "/volunteer/dashboard", icon: Home },
+    { name: "My Profile", to: "/volunteer/dashboard/profile", icon: User },
+    { name: "My Activities", to: "/volunteer/dashboard/activities", icon: Briefcase },
+    { name: "Certificates", to: "/volunteer/dashboard/certificates", icon: Award },
+    { name: "Events", to: "/volunteer/dashboard/events", icon: Calendar },
+    { name: "Announcements", to: "/volunteer/dashboard/announcements", icon: Megaphone },
+    { name: "Contact Coordinator", to: "/volunteer/dashboard/contact", icon: Mail },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("brij_volunteer_session");
+    navigate("/volunteer/login", { replace: true });
+  };
 
   const mockAnnouncements = [
     { id: 1, text: "Urgent: Stepwell (Kund) cleaning drive scheduled for this Sunday.", time: "1 hour ago" },
@@ -41,10 +47,10 @@ export default function VolunteerLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#111111] font-inter flex flex-col relative select-none">
+    <div className="min-h-screen bg-[#F2E8D6] text-[#111111] font-inter flex flex-col relative select-none">
       
       {/* Volunteer Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#D8C6A8]/30 px-6 py-4 flex justify-between items-center w-full">
+      <header className="sticky top-0 z-40 bg-[#F2E8D6]/90 backdrop-blur-md border-b border-[#D8C6A8]/30 px-6 py-4 flex justify-between items-center w-full">
         <div className="flex items-center gap-4">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -54,7 +60,7 @@ export default function VolunteerLayout() {
             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
           
-          <Link to="/" className="flex flex-col group">
+          <Link to="/volunteer/dashboard" className="flex flex-col group">
             <span className="text-md font-sora font-semibold tracking-tight text-[#111111] leading-none transition-colors duration-300 group-hover:text-[#8B6F47]">
               BRIJ BHOOMI
             </span>
@@ -63,7 +69,7 @@ export default function VolunteerLayout() {
             </span>
           </Link>
           <span className="hidden sm:inline-block h-4 w-[1px] bg-[#D8C6A8]/40"></span>
-          <span className="text-[10px] font-sora font-semibold tracking-widest text-[#8B6F47] uppercase bg-[#F2E8D6] px-2.5 py-0.5 rounded-[4px] hidden sm:inline-block">
+          <span className="text-[10px] font-sora font-semibold tracking-widest text-[#8B6F47] uppercase bg-[#FAF9F6]/55 px-2.5 py-0.5 rounded-[4px] hidden sm:inline-block">
             VOLUNTEER PORTAL
           </span>
         </div>
@@ -74,7 +80,7 @@ export default function VolunteerLayout() {
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="p-2 hover:bg-[#F2E8D6]/40 rounded-full transition-colors relative"
+              className="p-2 hover:bg-[#FAF9F6]/40 rounded-full transition-colors relative"
               aria-label="View Alerts"
             >
               <Bell size={18} className="text-[#111111] hover:text-[#8B6F47]" />
@@ -90,7 +96,7 @@ export default function VolunteerLayout() {
                 <div className="absolute right-0 mt-2 w-80 bg-white border border-[#D8C6A8]/40 shadow-lg rounded-xl py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="px-4 pb-2 border-b border-[#FAF9F6] flex justify-between items-center">
                     <span className="text-xs font-sora font-semibold text-[#111111]">Announcements</span>
-                    <Link to="/volunteer-portal/announcements" onClick={() => setShowNotifications(false)} className="text-[10px] text-[#8B6F47] font-medium hover:underline">View all</Link>
+                    <Link to="/volunteer/dashboard/announcements" onClick={() => setShowNotifications(false)} className="text-[10px] text-[#8B6F47] font-medium hover:underline">View all</Link>
                   </div>
                   <div className="max-h-64 overflow-y-auto">
                     {mockAnnouncements.map((ann) => (
@@ -121,10 +127,10 @@ export default function VolunteerLayout() {
       </header>
 
       {/* Body Area */}
-      <div className="flex flex-1 relative w-full">
+      <div className="flex flex-1 relative w-full font-inter">
         
         {/* Desktop Sticky Sidebar */}
-        <aside className="hidden lg:flex flex-col w-64 bg-[#FAF9F6] border-r border-[#D8C6A8]/30 min-h-[calc(100vh-65px)] sticky top-[65px] z-30 p-4 justify-between">
+        <aside className="hidden lg:flex flex-col w-64 bg-[#F2E8D6] border-r border-[#D8C6A8]/30 min-h-[calc(100vh-65px)] sticky top-[65px] z-30 p-4 justify-between">
           <div className="space-y-1">
             <span className="text-[9px] uppercase tracking-[0.2em] text-[#6B7280] font-semibold block px-3 mb-3 font-sora">Volunteer Hub</span>
             <nav className="space-y-1">
@@ -132,12 +138,12 @@ export default function VolunteerLayout() {
                 <NavLink
                   key={item.name}
                   to={item.to}
-                  end={item.to === "/volunteer"}
+                  end={item.to === "/volunteer/dashboard"}
                   className={({ isActive }) =>
                     `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all duration-300 ${
                       isActive
-                        ? "bg-[#F2E8D6] text-[#8B6F47] font-semibold"
-                        : "text-[#6B7280] hover:bg-[#F2E8D6]/30 hover:text-[#111111]"
+                        ? "bg-[#FCFAF5] text-[#8B6F47] font-semibold border border-[#D8C6A8]/45"
+                        : "text-[#6B7280] hover:bg-[#FCFAF5]/50 hover:text-[#111111]"
                     }`
                   }
                 >
@@ -149,13 +155,13 @@ export default function VolunteerLayout() {
           </div>
 
           <div className="pt-4 border-t border-[#D8C6A8]/30">
-            <Link
-              to="/"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-red-600 hover:bg-red-50 transition-all duration-300"
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-red-650 hover:bg-red-50 transition-all duration-300 w-full text-left"
             >
               <LogOut size={16} />
-              <span>Back to main site</span>
-            </Link>
+              <span>Logout</span>
+            </button>
           </div>
         </aside>
 
@@ -167,7 +173,7 @@ export default function VolunteerLayout() {
           onClick={() => setIsSidebarOpen(false)}
         >
           <div
-            className={`w-64 bg-[#FAF9F6] border-r border-[#D8C6A8]/30 h-full flex flex-col justify-between p-4 transition-transform duration-300 ease-out transform ${
+            className={`w-64 bg-[#F2E8D6] border-r border-[#D8C6A8]/30 h-full flex flex-col justify-between p-4 transition-transform duration-300 ease-out transform ${
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -177,7 +183,7 @@ export default function VolunteerLayout() {
                 <span className="text-xs font-sora font-semibold text-[#8B6F47] uppercase tracking-wider">Volunteer Hub</span>
                 <button
                   onClick={() => setIsSidebarOpen(false)}
-                  className="p-1 rounded-full hover:bg-[#F2E8D6]/30"
+                  className="p-1 rounded-full hover:bg-[#FAF9F6]/30"
                 >
                   <X size={18} />
                 </button>
@@ -188,13 +194,13 @@ export default function VolunteerLayout() {
                   <NavLink
                     key={item.name}
                     to={item.to}
-                    end={item.to === "/volunteer"}
+                    end={item.to === "/volunteer/dashboard"}
                     onClick={() => setIsSidebarOpen(false)}
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-all duration-300 ${
                         isActive
-                          ? "bg-[#F2E8D6] text-[#8B6F47] font-semibold"
-                          : "text-[#6B7280] hover:bg-[#F2E8D6]/30 hover:text-[#111111]"
+                          ? "bg-[#FCFAF5] text-[#8B6F47] font-semibold border border-[#D8C6A8]/45"
+                          : "text-[#6B7280] hover:bg-[#FCFAF5]/50 hover:text-[#111111]"
                       }`
                     }
                   >
@@ -206,13 +212,16 @@ export default function VolunteerLayout() {
             </div>
 
             <div className="pt-4 border-t border-[#D8C6A8]/30">
-              <Link
-                to="/"
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-red-600 hover:bg-red-50 transition-all duration-300"
+              <button
+                onClick={() => {
+                  setIsSidebarOpen(false);
+                  handleLogout();
+                }}
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium text-red-650 hover:bg-red-50 transition-all duration-300 w-full text-left"
               >
                 <LogOut size={16} />
-                <span>Back to main site</span>
-              </Link>
+                <span>Logout</span>
+              </button>
             </div>
           </div>
         </div>
@@ -224,12 +233,12 @@ export default function VolunteerLayout() {
       </div>
 
       {/* Mobile Sticky Bottom Nav Drawer */}
-      <footer className="lg:hidden sticky bottom-0 z-40 bg-[#FAF9F6]/95 backdrop-blur-md border-t border-[#D8C6A8]/30 flex items-center justify-around py-2.5 px-4 w-full">
+      <footer className="lg:hidden sticky bottom-0 z-40 bg-[#F2E8D6]/95 backdrop-blur-md border-t border-[#D8C6A8]/30 flex items-center justify-around py-2.5 px-4 w-full">
         {menuItems.slice(0, 5).map((item) => (
           <NavLink
             key={item.name}
             to={item.to}
-            end={item.to === "/volunteer"}
+            end={item.to === "/volunteer/dashboard"}
             className={({ isActive }) =>
               `flex flex-col items-center gap-0.5 text-[9px] font-medium transition-colors duration-300 ${
                 isActive ? "text-[#8B6F47]" : "text-[#6B7280] hover:text-[#111111]"
