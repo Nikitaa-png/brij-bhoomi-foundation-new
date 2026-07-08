@@ -83,7 +83,7 @@ export default function Footer() {
           {/* Links Column */}
           <div className="md:col-span-7 lg:col-span-5 min-w-0">
             <h4 className="text-[9px] font-semibold text-white uppercase tracking-wider mb-2 font-sora">Site Pages</h4>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1.5">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1.5 mb-4">
               {footerLinks.map((l) => (
                 <li key={l.name} className="min-w-0">
                   <Link to={l.to} className="text-[11px] text-white/75 hover:text-[#B67A2A] transition-colors duration-300 block truncate sm:whitespace-normal break-words leading-tight">
@@ -91,6 +91,19 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+            <h4 className="text-[9px] font-semibold text-white uppercase tracking-wider mb-2 font-sora pt-2 border-t border-white/5">Portals</h4>
+            <ul className="flex gap-4">
+              <li>
+                <Link to="/admin" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
+                  Admin Portal
+                </Link>
+              </li>
+              <li>
+                <Link to="/volunteer-portal" className="text-[11px] text-[#B67A2A] hover:underline font-semibold tracking-wider uppercase">
+                  Volunteer Portal
+                </Link>
+              </li>
             </ul>
           </div>
 
