@@ -30,9 +30,22 @@ const YoutubeIcon = () => (
 );
 
 export default function Hero() {
+  const [currentIdx, setCurrentIdx] = React.useState(0);
+
+  const images = [
+    { src: "/cover-images/hero_slide_1.png", alt: "Inauguration ceremony lighting the lamp" },
+    { src: "/cover-images/hero_slide_2.png", alt: "MaaYaa sanitary pad free distribution program" },
+    { src: "/cover-images/hero_slide_3.png", alt: "Brij Bhoomi cleanliness campaign volunteers group" },
+    { src: "/cover-images/hero_slide_4.png", alt: "Empowering rural women through Shakti Ko Pranam drive" }
+  ];
+
   useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % images.length);
+    }, 5000);
+
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray([".hero-label", ".hero-heading", ".hero-paragraph", ".hero-buttons"]);
+      const items = gsap.utils.toArray([".hero-label", ".hero-heading", ".hero-paragraph", ".hero-buttons", ".hero-slideshow"]);
       gsap.set(items, { opacity: 0, y: 80, filter: "blur(12px)" });
       gsap.to(items, {
         opacity: 1,
@@ -44,11 +57,15 @@ export default function Hero() {
         delay: 0.2
       });
     });
-    return () => ctx.revert();
+
+    return () => {
+      clearInterval(timer);
+      ctx.revert();
+    };
   }, []);
 
   return (
-    <section id="hero" className="w-full h-screen min-h-screen flex items-center justify-start bg-transparent relative overflow-hidden z-20 px-[8vw] pt-[80px] md:pt-[96px]">
+    <section id="hero" className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-start bg-transparent relative overflow-hidden z-20 px-[8vw] pt-[110px] pb-16 lg:py-0">
       
       {/* Background Video */}
       <video
@@ -62,7 +79,7 @@ export default function Hero() {
       </video>
 
       {/* Dark Mask Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/45 to-black/65 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/50 to-black/70 z-10 pointer-events-none" />
 
       {/* Left Vertical Socials Bar */}
       <div className="absolute left-[3vw] bottom-[8vh] flex flex-col gap-4 items-center z-30 hidden md:flex">
@@ -92,8 +109,10 @@ export default function Hero() {
       </div>
 
       {/* Content wrapper */}
-      <div className="relative w-full max-w-none text-left text-white z-20">
-        <div className="max-w-[750px] space-y-6">
+      <div className="relative w-full max-w-none text-left text-white z-20 flex flex-col lg:flex-row items-center justify-between gap-10 xl:gap-14 mt-4 lg:mt-0">
+        
+        {/* Text column */}
+        <div className="w-full lg:max-w-[50vw] space-y-6 shrink-0">
           <span className="hero-label text-[11px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
             Together, We Can Create Lasting Change.
           </span>
@@ -120,6 +139,39 @@ export default function Hero() {
             </Link>
           </div>
         </div>
+
+        {/* Cinematic Slideshow Column */}
+        <div className="hero-slideshow w-full max-w-lg lg:max-w-[36vw] aspect-[4/3] rounded-[6px] border border-white/10 overflow-hidden shadow-2xl shrink-0 z-20 bg-black/40 relative group">
+          {images.map((img, index) => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                index === currentIdx 
+                  ? "opacity-100 scale-100" 
+                  : "opacity-0 scale-[1.04] pointer-events-none"
+              }`}
+            />
+          ))}
+          {/* Slideshow Dark Edge Gradient Mask */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
+
+          {/* Slideshow Caption */}
+          <div className="absolute bottom-4 left-4 right-4 z-10 text-left">
+            <span className="text-[7.5px] uppercase tracking-[0.2em] text-brij-accent font-semibold block mb-0.5">
+              Core Initiative
+            </span>
+            <span className="text-[11px] font-sora font-semibold text-white/95 transition-all duration-300">
+              {currentIdx === 0 && "Inauguration Ceremony & Lamp Lighting"}
+              {currentIdx === 1 && "MaaYaa Sanitary Pad Free Distribution"}
+              {currentIdx === 2 && "Brij Bhoomi Swachhata Cleanliness Drive"}
+              {currentIdx === 3 && "Shakti Ko Pranam Women Empowerment"}
+            </span>
+          </div>
+        </div>
+
       </div>
       
     </section>
