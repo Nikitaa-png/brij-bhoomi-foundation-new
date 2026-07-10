@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
@@ -30,7 +30,9 @@ const YoutubeIcon = () => (
 );
 
 export default function Hero() {
-  const [currentIdx, setCurrentIdx] = React.useState(0);
+  const [currentMedia, setCurrentMedia] = useState("video"); // "video" | "image"
+  const [currentImageIdx, setCurrentImageIdx] = useState(0);
+  const videoRef = useRef(null);
 
   const images = [
     { src: "/cover-images/hero_slide_1.png", alt: "Inauguration ceremony lighting the lamp" },
@@ -39,13 +41,10 @@ export default function Hero() {
     { src: "/cover-images/hero_slide_4.png", alt: "Empowering rural women through Shakti Ko Pranam drive" }
   ];
 
+  // GSAP entry animation on mount
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % images.length);
-    }, 5000);
-
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray([".hero-label", ".hero-heading", ".hero-paragraph", ".hero-buttons", ".hero-slideshow"]);
+      const items = gsap.utils.toArray([".hero-label", ".hero-heading", ".hero-paragraph", ".hero-buttons"]);
       gsap.set(items, { opacity: 0, y: 80, filter: "blur(12px)" });
       gsap.to(items, {
         opacity: 1,
@@ -57,28 +56,69 @@ export default function Hero() {
         delay: 0.2
       });
     });
-
-    return () => {
-      clearInterval(timer);
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
+  // Autoplay carousel timer (loops through 4 images for 5 seconds each, then returns to video)
+  useEffect(() => {
+    if (currentMedia !== "image") return;
+
+    const timer = setInterval(() => {
+      setCurrentImageIdx((prev) => {
+        if (prev === images.length - 1) {
+          // If it was the last image, switch back to video
+          setCurrentMedia("video");
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+            videoRef.current.play().catch((err) => console.log("Video playback interrupted:", err));
+          }
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [currentMedia, images.length]);
+
+  const handleVideoEnded = () => {
+    // When the video ends playing once, switch to the image slideshow starting at index 0
+    setCurrentMedia("image");
+    setCurrentImageIdx(0);
+  };
+
   return (
-    <section id="hero" className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-start bg-transparent relative overflow-hidden z-20 px-[8vw] pt-[110px] pb-16 lg:py-0">
+    <section id="hero" className="w-full h-screen min-h-screen flex items-center justify-start bg-black relative overflow-hidden z-20 px-[8vw] pt-[100px] md:pt-[120px]">
       
-      {/* Background Video */}
+      {/* Background Video (Edge-to-edge, loops as part of the sequence via onEnded) */}
       <video
+        ref={videoRef}
         autoPlay
-        loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-85"
+        onEnded={handleVideoEnded}
+        className={`absolute inset-0 w-full h-full object-cover z-0 pointer-events-none transition-opacity duration-1000 ${
+          currentMedia === "video" ? "opacity-85 scale-100" : "opacity-0 scale-[1.02] pointer-events-none"
+        }`}
       >
         <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Mask Overlay */}
+      {/* Background Slideshow Images (Edge-to-edge cover layout, preloaded via parallel rendering) */}
+      {images.map((img, index) => (
+        <img
+          key={img.src}
+          src={img.src}
+          alt={img.alt}
+          className={`absolute inset-0 w-full h-full object-cover z-0 pointer-events-none transition-all duration-1000 ease-in-out ${
+            currentMedia === "image" && index === currentImageIdx
+              ? "opacity-85 scale-100"
+              : "opacity-0 scale-[1.04] pointer-events-none"
+          }`}
+        />
+      ))}
+
+      {/* Dark Mask Overlay - Spans full width and height for readability */}
       <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/50 to-black/70 z-10 pointer-events-none" />
 
       {/* Left Vertical Socials Bar */}
@@ -92,11 +132,19 @@ export default function Hero() {
 
       {/* Right Vertical Slide Indicator */}
       <div className="absolute right-[4vw] top-[45%] flex flex-col gap-4 items-center z-30 hidden md:flex">
-        <span className="text-[10px] tracking-widest text-white/40 font-semibold uppercase font-sora">01 —</span>
+        <span className="text-[10px] tracking-widest text-white/40 font-semibold uppercase font-sora">
+          {currentMedia === "video" ? "VIDEO" : `0${currentImageIdx + 1}`} —
+        </span>
         <div className="flex flex-col gap-2.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-brij-accent"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/20"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+          <span className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${currentMedia === "video" ? "bg-brij-accent" : "bg-white/20"}`}></span>
+          {images.map((_, idx) => (
+            <span
+              key={idx}
+              className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
+                currentMedia === "image" && idx === currentImageIdx ? "bg-brij-accent" : "bg-white/20"
+              }`}
+            ></span>
+          ))}
         </div>
       </div>
 
@@ -108,11 +156,9 @@ export default function Hero() {
         <span>Scroll to explore</span>
       </div>
 
-      {/* Content wrapper */}
-      <div className="relative w-full max-w-none text-left text-white z-20 flex flex-col lg:flex-row items-center justify-between gap-10 xl:gap-14 mt-4 lg:mt-0">
-        
-        {/* Text column */}
-        <div className="w-full lg:max-w-[50vw] space-y-6 shrink-0">
+      {/* Content wrapper - Standard text layouts */}
+      <div className="relative w-full max-w-none text-left text-white z-20">
+        <div className="max-w-[750px] space-y-5">
           <span className="hero-label text-[11px] uppercase tracking-[0.3em] text-brij-accent font-semibold block">
             Together, We Can Create Lasting Change.
           </span>
@@ -124,7 +170,7 @@ export default function Hero() {
           <p className="hero-paragraph text-xs md:text-[13.5px] lg:text-sm font-light text-white/75 leading-relaxed tracking-wide font-inter max-w-2xl">
             Brij Bhoomi Foundation is a non-profit organization committed to creating meaningful social impact through education, healthcare, environmental conservation, women empowerment, rural development, humanitarian assistance, and community welfare. We believe that lasting change begins with collective action, and our mission is to empower lives while building stronger, healthier, and more sustainable communities.
           </p>
-          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-4">
+          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-1">
             <Link
               to="/volunteer"
               className="flex items-center justify-center gap-2 px-7 py-3.5 bg-brij-accent text-white text-[11px] font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] rounded-[3px] shadow-md hover:shadow-xl w-full sm:w-auto text-center"
@@ -139,39 +185,6 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-
-        {/* Cinematic Slideshow Column */}
-        <div className="hero-slideshow w-full max-w-lg lg:max-w-[36vw] aspect-[4/3] rounded-[6px] border border-white/10 overflow-hidden shadow-2xl shrink-0 z-20 bg-black/40 relative group">
-          {images.map((img, index) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                index === currentIdx 
-                  ? "opacity-100 scale-100" 
-                  : "opacity-0 scale-[1.04] pointer-events-none"
-              }`}
-            />
-          ))}
-          {/* Slideshow Dark Edge Gradient Mask */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
-
-          {/* Slideshow Caption */}
-          <div className="absolute bottom-4 left-4 right-4 z-10 text-left">
-            <span className="text-[7.5px] uppercase tracking-[0.2em] text-brij-accent font-semibold block mb-0.5">
-              Core Initiative
-            </span>
-            <span className="text-[11px] font-sora font-semibold text-white/95 transition-all duration-300">
-              {currentIdx === 0 && "Inauguration Ceremony & Lamp Lighting"}
-              {currentIdx === 1 && "MaaYaa Sanitary Pad Free Distribution"}
-              {currentIdx === 2 && "Brij Bhoomi Swachhata Cleanliness Drive"}
-              {currentIdx === 3 && "Shakti Ko Pranam Women Empowerment"}
-            </span>
-          </div>
-        </div>
-
       </div>
       
     </section>
