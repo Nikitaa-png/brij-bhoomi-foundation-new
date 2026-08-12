@@ -168,7 +168,7 @@ export default function Hero() {
             <span className="hero-line block">Sustainable <span className="text-brij-accent">Development</span></span>
           </h1>
           <p className="hero-paragraph text-xs md:text-[13.5px] lg:text-sm font-light text-white/75 leading-relaxed tracking-wide font-inter max-w-2xl">
-            Brij Bhoomi Foundation is a non-profit organization committed to creating meaningful social impact through education, healthcare, environmental conservation, women empowerment, rural development, humanitarian assistance, and community welfare. We believe that lasting change begins with collective action, and our mission is to empower lives while building stronger, healthier, and more sustainable communities.
+            Brij Bhoomi Foundation is dedicated to creating sustainable social impact and empowering communities. We believe that lasting change is achieved when communities are equipped with resources, opportunities, and skills to build a stronger, healthier, and more sustainable future.
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-start items-center w-full sm:w-auto pt-1">
             <Link

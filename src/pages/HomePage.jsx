@@ -58,7 +58,7 @@ function AboutPreview() {
       <SectionLabel text="About Us" />
       <SectionHeading>About Brij Bhoomi Foundation</SectionHeading>
       <p className="cinematic-reveal text-sm text-[#3c372f] leading-relaxed font-inter font-normal max-w-2xl mb-8">
-        Brij Bhoomi Foundation is a non-profit organization dedicated to transforming lives through sustainable social development. We work across education, healthcare, women empowerment, environmental conservation, and rural development to create measurable, lasting impact.
+        Brijbhoomi Foundation was started by a group of like-minded people dedicated to improving the lives of poor people, women, children, and elderly people. Our focus areas include education, women empowerment, health, sanitation, and community development, working together to create long-term structural solutions for those in need.
       </p>
       <MoreBtn to="/about" label="Learn More About Us" />
     </PreviewSection>
@@ -73,8 +73,8 @@ function MissionPreview() {
       <SectionHeading>Vision & Mission</SectionHeading>
       <div className="cinematic-reveal grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {[
-          { title: "Our Mission", text: "To create sustainable social impact through community-driven development programs in education, healthcare, women empowerment, environmental conservation, and rural development." },
-          { title: "Our Vision",  text: "To build an inclusive, empowered, and sustainable society where every individual has access to education, healthcare, and equal opportunities regardless of background." },
+          { title: "Our Mission", text: "To transform one million rural lives every five years through holistic development across Health, Education, Water & Sanitation and Economic Development by creating a scalable, replicable and community-centric model of sustainable development." },
+          { title: "Our Vision",  text: "An empowered India where communities are capable of transforming their own lives through rural empowerment, modern technology, best practices and values." },
         ].map((c) => (
           <div key={c.title} className="bg-[#FCFAF5] border border-[#D8C6A8]/70 rounded-[16px] p-8">
             <h3 className="text-base font-sora font-semibold text-[#2E2E2E] mb-3">{c.title}</h3>
@@ -87,26 +87,41 @@ function MissionPreview() {
   );
 }
 
-// ─── Programs Preview ────────────────────────────────────────────────────────
-function ProgramsPreview() {
+// ─── Initiatives Preview ─────────────────────────────────────────────────────
+function InitiativesPreview() {
+  const homeInitiatives = [
+    { title: "Brijbhoomi Swachatha Abhiyaan", img: "/eco_volunteers.png", iconName: "Leaf", desc: "Cleanliness campaign in Mathura supporting Swachh Bharat." },
+    { title: "Naari Shakti Ko Pranaam", img: "/about image/About us/IMG-20170120-WA0233.jpg", iconName: "Users", desc: "Salute to women power and empowerment across 14 states." },
+    { title: "Shri Rudra Gurukul", img: "/children_education.png", iconName: "BookOpen", desc: "Transformational Gurukul value system and holistic education." },
+    { title: "Shri Rudra Gaushala", img: "/shri_rudra_gaushala.png", iconName: "Home", desc: "Protection and enhancement of indigenous Indian cow breeds." },
+    { title: "Shri Rudra Ashray Sewa Sadan", img: "/elderly_care.png", iconName: "Heart", desc: "Shelter, food, and healthcare for destitute and abandoned elderly." },
+    { title: "Covid Helpline-19", img: "/about image/About us/IMG-20210706-WA0633.jpg", iconName: "Award", desc: "Selfless service and helpline across 62 districts during the epidemic." }
+  ];
+
   return (
-    <PreviewSection id="home-programs" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
+    <PreviewSection id="home-initiatives" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
       <SectionLabel text="What We Do" />
-      <SectionHeading>Programs & Initiatives</SectionHeading>
-      <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-        {programCards.map((p) => (
-          <div key={p.title} className="bg-white border border-[#D8C6A8]/70 rounded-[12px] overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-500">
-            <div className="h-28 overflow-hidden relative">
-              <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="p-3 flex items-center gap-2">
-              {getProgramIcon(p.iconName)}
-              <span className="text-[10px] font-sora font-semibold text-[#1F1F1F] leading-tight">{p.title}</span>
+      <SectionHeading>Our Initiatives</SectionHeading>
+      <div className="cinematic-reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {homeInitiatives.map((p) => (
+          <div key={p.title} className="bg-white border border-[#D8C6A8]/70 rounded-[16px] overflow-hidden group hover:-translate-y-1 hover:shadow-md transition-all duration-500 flex flex-col justify-between">
+            <div>
+              <div className="h-48 overflow-hidden relative border-b border-[#D8C6A8]/30">
+                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm border border-[#D8C6A8]/50 px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+                  {getProgramIcon(p.iconName)}
+                  <span className="text-[8px] font-sora font-semibold text-[#8B6F47] uppercase tracking-wider">{p.title.split(" ")[0]}</span>
+                </div>
+              </div>
+              <div className="p-5 space-y-2">
+                <h4 className="text-sm font-sora font-semibold text-[#2E2E2E] leading-snug">{p.title}</h4>
+                <p className="text-xs text-[#555555] leading-relaxed font-inter font-normal">{p.desc}</p>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      <MoreBtn to="/programs" label="View All Programs" />
+      <MoreBtn to="/initiatives" label="Explore Full Initiatives" />
     </PreviewSection>
   );
 }
@@ -116,7 +131,13 @@ function ImpactPreview() {
   return (
     <PreviewSection id="home-impact" bg="bg-[#F2E8D6]" border="border-[#D8C6A8]">
       <SectionLabel text="Our Footprint" />
-      <SectionHeading>Real Impact, Real Change</SectionHeading>
+      <SectionHeading>Creating Measurable & Sustainable Change</SectionHeading>
+      <p className="cinematic-reveal text-sm font-semibold text-[#B67A2A] leading-relaxed font-inter mb-4">
+        Empowering Lives. Preserving Environment. Strengthening Communities.
+      </p>
+      <p className="cinematic-reveal text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal max-w-3xl mb-8">
+        At Brij Bhoomi Foundation, we build long-term, structural solutions through education, healthcare, environmental conservation, women empowerment, rural development, and youth initiatives.
+      </p>
       <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         {homeImpactStats.map((s) => (
           <div key={s.label} className="bg-[#FCFAF5] border border-[#D8C6A8]/70 rounded-[16px] p-6 text-center">
@@ -198,9 +219,24 @@ function BlogPreview() {
 // ─── Get Involved Preview ────────────────────────────────────────────────────
 function GetInvolvedPreview() {
   const cards = [
-    { title: "Donate",         desc: "Your contribution directly funds education, healthcare, and community programs.", to: "/donate",          cta: "Donate Now" },
-    { title: "Volunteer",      desc: "Join our passionate network of volunteers driving ground operations.",           to: "/volunteer",       cta: "Become a Volunteer" },
-    { title: "CSR Partner",    desc: "Partner with us to implement high-impact CSR initiatives.",                    to: "/csr-partnership", cta: "Partner With Us" },
+    { 
+      title: "Donate", 
+      desc: "Support our campaigns to remove hunger, poverty, and filth from Brijbhoomi while providing quality education for all.", 
+      to: "/donate", 
+      cta: "Donate Now" 
+    },
+    { 
+      title: "Volunteer", 
+      desc: "Become a Volunteer — Be the Change You Wish to See. Your time, skills, and passion can create a better tomorrow.", 
+      to: "/volunteer", 
+      cta: "Become a Volunteer" 
+    },
+    { 
+      title: "CSR Partner", 
+      desc: "Partner with Brij Bhoomi Foundation to create sustainable social impact and long-term community development.", 
+      to: "/csr-partnership", 
+      cta: "Partner With Us" 
+    },
   ];
   return (
     <PreviewSection id="home-get-involved" bg="bg-[#F2E8D6]" border="border-[#D8C6A8]">
@@ -219,6 +255,20 @@ function GetInvolvedPreview() {
           </div>
         ))}
       </div>
+    </PreviewSection>
+  );
+}
+
+// ─── Transparency Preview ────────────────────────────────────────────────────
+function TransparencyPreview() {
+  return (
+    <PreviewSection id="home-transparency" bg="bg-[#FAF7F0]" border="border-[#1f1a14]/5">
+      <SectionLabel text="Accountability" />
+      <SectionHeading>Transparency Builds Trust. Accountability Creates Lasting Impact.</SectionHeading>
+      <p className="cinematic-reveal text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal max-w-3xl mb-8">
+        At Brij Bhoomi Foundation, we are committed to responsible governance, ethical practices, and complete financial transparency. We share audit reports, compliance documentations, and programmatic outcomes to keep our partners and supporters fully informed.
+      </p>
+      <MoreBtn to="/transparency" label="View Financials & Audits" />
     </PreviewSection>
   );
 }
@@ -256,12 +306,13 @@ export default function HomePage() {
       <Hero />
       <AboutPreview />
       <MissionPreview />
-      <ProgramsPreview />
+      <InitiativesPreview />
       <ImpactPreview />
       <GalleryPreview />
       <EventsPreview />
       <BlogPreview />
       <GetInvolvedPreview />
+      <TransparencyPreview />
       <FinalCTA />
     </>
   );
