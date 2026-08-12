@@ -5,6 +5,7 @@ import Layout            from "./components/layout/Layout";
 import HomePage          from "./pages/HomePage";
 import AboutPage         from "./pages/AboutPage";
 import VisionMissionPage from "./pages/VisionMissionPage";
+import InitiativesPage   from "./pages/InitiativesPage";
 import ImpactPage        from "./pages/ImpactPage";
 import ProgramsPage      from "./pages/ProgramsPage";
 import DonatePage        from "./pages/DonatePage";
@@ -56,6 +57,7 @@ export default function App() {
           <Route index                    element={<HomePage />} />
           <Route path="/about"              element={<AboutPage />} />
           <Route path="/vision-mission"     element={<VisionMissionPage />} />
+          <Route path="/initiatives"        element={<InitiativesPage />} />
           <Route path="/impact"             element={<ImpactPage />} />
           <Route path="/programs"           element={<ProgramsPage />} />
           <Route path="/donate"             element={<DonatePage />} />

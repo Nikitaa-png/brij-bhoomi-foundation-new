@@ -57,7 +57,7 @@ export default function Transparency() {
         {/* Hero Section */}
         <div className="max-w-3xl space-y-6">
           <span className="cinematic-reveal text-[11px] uppercase tracking-[0.3em] text-[#B67A2A] font-sora font-semibold block">
-            Annual Reports & Transparency
+            ANNUAL REPORTS & TRANSPARENCY
           </span>
           <h2 className="cinematic-reveal text-3xl md:text-5xl font-sora font-semibold tracking-tight leading-tight text-[#2E2E2E]">
             Transparency Builds Trust. Accountability Creates Lasting Impact.

@@ -44,7 +44,7 @@ export default function Mission() {
             <div>
               <h4 className="text-base font-sora font-semibold text-[#2E2E2E] mb-3">Our Mission</h4>
               <p className="text-xs md:text-[13px] text-[#4E4E4E] leading-relaxed font-inter font-normal">
-                Our mission is to create sustainable social impact by implementing community-driven development programs, promoting education, improving healthcare accessibility, empowering women and youth, protecting the environment, and fostering partnerships that contribute to long-term national development.
+                <strong>To transform one million rural lives every five years through holistic development across Health, Education, Water & Sanitation and Economic Development by creating a scalable, replicable and community-centric model of sustainable development.</strong>
               </p>
             </div>
           </div>
@@ -60,7 +60,10 @@ export default function Mission() {
             <div>
               <h4 className="text-base font-sora font-semibold text-[#2E2E2E] mb-3">Our Vision</h4>
               <p className="text-xs md:text-[13px] text-[#4E4E4E] leading-relaxed font-inter font-normal">
-                To build an inclusive, empowered, and sustainable society where every individual has access to education, healthcare, equal opportunities, and a better quality of life regardless of their background.
+                <strong>An empowered India where communities are capable of transforming their own lives.</strong>
+              </p>
+              <p className="text-xs md:text-[13px] text-[#4E4E4E] leading-relaxed font-inter font-normal mt-3">
+                Our vision is rural empowerment through best practices, modern technology and values.
               </p>
             </div>
           </div>

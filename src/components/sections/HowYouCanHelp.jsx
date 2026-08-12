@@ -59,7 +59,7 @@ export default function HowYouCanHelp() {
         {/* Hero Section */}
         <div className="max-w-3xl space-y-6">
           <span className="cinematic-reveal text-[11px] uppercase tracking-[0.3em] text-[#B67A2A] font-sora font-semibold block">
-            CSR Partnership
+            CSR PARTNERSHIP
           </span>
           <h2 className="cinematic-reveal text-3xl md:text-5xl font-sora font-semibold tracking-tight leading-tight text-[#1F1F1F]">
             Partner With Brij Bhoomi Foundation to Create Sustainable Social Impact
@@ -74,7 +74,7 @@ export default function HowYouCanHelp() {
 
         {/* Why Partner With Us */}
         <div className="cinematic-reveal space-y-6 border-t border-[#D8C6A8] pt-12">
-          <h3 className="text-xl font-sora font-semibold text-[#1F1F1F]">Why Partner With Brij Bhoomi Foundation?</h3>
+          <h3 className="text-xl font-sora font-semibold text-[#1F1F1F]">WHY PARTNER WITH BRIJ BHOOMI FOUNDATION?</h3>
           <p className="text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal max-w-3xl">
             Today's businesses are expected to create value beyond profits. Partnering with Brij Bhoomi Foundation enables your organization to contribute toward sustainable development while fulfilling its social responsibility goals through professionally managed, transparent, and high-impact projects. Our team ensures every CSR initiative is planned, implemented, monitored, and reported with complete accountability.
           </p>

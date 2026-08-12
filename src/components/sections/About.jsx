@@ -66,7 +66,7 @@ export default function About() {
       </section>
 
       {/* Main About Section */}
-      <section id="about" className="w-screen py-20 px-[8vw] lg:py-24 flex items-center bg-transparent relative z-20 border-t border-[#1f1a14]/5 overflow-hidden">
+      <section id="about" className="w-screen pt-20 pb-8 px-[8vw] lg:pt-24 lg:pb-10 flex items-center bg-transparent relative z-20 border-t border-[#1f1a14]/5 overflow-hidden">
         
         <GrainyBackground 
           id="grainy-paper-noise" 
@@ -93,13 +93,10 @@ export default function About() {
               </div>
               
               <p className="cinematic-reveal text-sm font-semibold text-[#1f1a14] leading-relaxed font-inter">
-                Empowering Lives. Strengthening Communities. Creating a Sustainable Future.
+                Brijbhoomi  Foundation  is to create a model for development that can be replicated at scale across India and perhaps the world.
               </p>
               <p className="cinematic-reveal text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
-                Brij Bhoomi Foundation is a non-profit organization dedicated to transforming lives through sustainable social development initiatives. We work with communities, volunteers, institutions, and corporate partners to create meaningful and long-lasting impact in education, healthcare, environmental conservation, women empowerment, rural development, youth development, and humanitarian support.
-              </p>
-              <p className="cinematic-reveal text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
-                Our belief is simple: every individual deserves equal opportunities, dignity, quality education, accessible healthcare, and a sustainable future. Through innovative programs, strategic partnerships, and community participation, we aim to build stronger, healthier, and self-reliant communities across India.
+                Brijbhoomi Foundation operates with the single-minded focus of empowering rural and urban India.
               </p>
 
               {/* About Us Page Image */}
@@ -187,10 +184,93 @@ export default function About() {
               ))}
             </div>
 
+            {/* Non-Profit Block */}
+            <div className="cinematic-reveal pt-5 border-t border-[#1f1a14]/15 space-y-3.5">
+              <h3 className="text-sm font-sora font-semibold text-[#1f1a14] uppercase tracking-wider">We Are A Non Profit Organization</h3>
+              <p className="text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
+                Brijbhoomi Foundation was founded in the year 2016, we are committed to bring harmony for those who have been forced socially and economically to remain excluded to compete with the pace of the world. We strive to construct a society where each and every individual would be able to prove them selves useful for the nation. While we are helping out poor and unable people by honest support from donors economically, we also highlight their vulnerable conditions so as to reflect truth of our society. As the adage goes ‘The first step in solving a problem is to recognize that it does exist’.
+              </p>
             </div>
-   
+
+            {/* Philosophy & Strategy Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full pt-4">
+              {/* Philosophy Card */}
+              <div className="cinematic-reveal premium-card p-6 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-sora font-semibold text-[#1f1a14] uppercase tracking-wider">
+                    OUR PHILOSOPHY
+                  </h3>
+                  <p className="text-xs text-[#5c5449] leading-relaxed font-inter font-normal">
+                    At the Brijbhoomi Foundation, we believe that the partnership of rural and urban India with corporates, young urban India, the Government and other foundations is the key to create a permanent and irreversible change for good.
+                  </p>
+                </div>
+              </div>
+
+              {/* Strategy Card */}
+              <div className="cinematic-reveal premium-card p-6 flex flex-col justify-between">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-sora font-semibold text-[#1f1a14] uppercase tracking-wider">
+                    OUR STRATEGY
+                  </h3>
+                  <p className="text-xs text-[#5c5449] leading-relaxed font-inter font-normal">
+                    Our strategy is to Engage, Empower, Execute and Exit:
+                  </p>
+                  <p className="text-xs text-[#5c5449] leading-relaxed font-inter font-normal">
+                    To engage rural communities with corporate, young urban India, not-for-profit organizations and government to empower our communities to execute programs that transform their own lives.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Who We Are Box */}
+        <div className="cinematic-reveal mt-12 w-full p-8 md:p-12 rounded-[16px] border border-[#8B6F47]/20 shadow-sm bg-[#8B6F47] hover:shadow-lg transition-all duration-500 text-left">
+            <div className="max-w-4xl space-y-6">
+              <h3 className="text-xl md:text-2xl font-sora font-semibold text-white tracking-wide">
+                WHO WE ARE?
+              </h3>
+              <p className="text-[14px] md:text-[15px] text-white/90 leading-relaxed font-inter font-normal">
+                A group of like-minded people started Brijbhoomi Foundation. The purpose is to improve the lives of poor, old age people, women and children through Child Education, Child Protection, Literacy Program, Women Employment, and Empowerment.
+              </p>
+              <p className="text-[14px] md:text-[15px] text-white/90 leading-relaxed font-inter font-normal">
+                Brijbhoomi Foundation is an organization that works for women empowerment, Swachatha, gau sanrakshan, Education, Health and poorly old people. The society focuses on various projects to uplift women from poverty and to provide self-dependent income generation programs for needy women. Under old age rehabilitation program, we focus on the action plan of special arrangements on the shelter and living conditions of old people. We also work for providing education to poor kids who are willing to study but because of financial restriction they are not able to continue their education.
+              </p>
+            </div>
           </div>
           
+        </div>
+      </section>
+
+      {/* Our Founder Section */}
+      <section className="w-screen pt-8 pb-20 px-[8vw] bg-[#FAF7F0] relative z-20 border-t border-[#1f1a14]/5 overflow-hidden">
+        <GrainyBackground 
+          id="grainy-paper-founder" 
+          bgClass="bg-[#FAF7F0]" 
+          opacityClass="opacity-[0.055]" 
+          matrixValue="0.04" 
+        />
+        <div className="w-full max-w-none text-left relative z-10">
+          
+          <div className="cinematic-reveal border-b border-[#1f1a14]/15 pb-6 mb-12">
+            <span className="text-[11px] uppercase tracking-[0.3em] text-[#B67A2A] font-sora font-semibold block mb-2">
+              Founder
+            </span>
+            <h2 className="text-3xl md:text-4xl font-sora font-semibold tracking-tight text-[#1f1a14]">
+              Our Founder
+            </h2>
+          </div>
+
+          <div className="max-w-4xl space-y-6">
+            <p className="cinematic-reveal text-sm font-semibold text-[#1f1a14] leading-relaxed font-inter">
+              Brijbhoomi Foundation is founded by Mr. Ashwani Kumar Choudhary in 2016, along with his team he is all ready to accomplish its most awaited dream to remove hunger, poverty, filth from Brijbhoomi and provide education to all. He want to lessen the ever increasing gap between the urban prosperity and rural poverty, which seems possible from his efforts.
+            </p>
+            <p className="cinematic-reveal text-[13px] text-[#3c372f] leading-relaxed font-inter font-normal">
+              Ashwani Kumar Choudhary is running an organization which has its core values grounded in empathy and dignity. As an active citizen of India you ought to be serving your nation with whatsoever means. But it becomes very tough to accept that some sections of our country don’t even know, ‘Why to serve our country’. That’s why there is an urgent need to educate people, so that they can acknowledge some of the obvious facts.
+            </p>
+          </div>
+
         </div>
       </section>
 

@@ -67,14 +67,17 @@ export default function Impact() {
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="cinematic-reveal">
               <span className="text-[11px] uppercase tracking-[0.3em] text-[#B67A2A] font-sora font-semibold block mb-2">
-                Our Impact
+                WELFARE INITIATIVES & STRATEGIC FOCUS AREAS
               </span>
               <h2 className="text-3xl md:text-5xl font-sora font-semibold tracking-tight leading-tight text-[#2E2E2E]">
-                Creating Measurable & Sustainable Change
+                OUR IMPACT
               </h2>
             </div>
             
             <p className="cinematic-reveal text-sm font-semibold text-[#B67A2A] leading-relaxed font-inter">
+              Creating Measurable & Sustainable Change
+            </p>
+            <p className="cinematic-reveal text-xs md:text-sm font-semibold text-[#555555] leading-relaxed font-inter">
               Empowering Lives. Preserving Environment. Strengthening Communities.
             </p>
             <p className="cinematic-reveal text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal">
@@ -102,6 +105,28 @@ export default function Impact() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Ground Action Block */}
+            <div className="cinematic-reveal pt-5 border-t border-[#D8C6A8]/45 space-y-3.5">
+              <h3 className="text-sm font-sora font-semibold text-[#2E2E2E] uppercase tracking-wider">Ground Action</h3>
+              <p className="text-xs md:text-sm font-semibold text-[#555555] leading-relaxed font-inter">
+                Every picture tells a story of hope, compassion, and change.
+              </p>
+              <p className="text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal">
+                These moments reflect our journey of empowering communities and creating a better tomorrow.
+              </p>
+            </div>
+
+            {/* Driving Change Block */}
+            <div className="cinematic-reveal pt-5 border-t border-[#D8C6A8]/45 space-y-3.5">
+              <h3 className="text-sm font-sora font-semibold text-[#2E2E2E] uppercase tracking-wider">Driving Change Through Community Action</h3>
+              <p className="text-xs md:text-sm font-semibold text-[#555555] leading-relaxed font-inter">
+                Every Event Inspires Awareness. Every Campaign Creates Impact.
+              </p>
+              <p className="text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal">
+                At Brij Bhoomi Foundation, our events and campaigns are designed to educate, inspire, and mobilize communities toward meaningful social change. From awareness drives and medical camps to environmental initiatives and youth programs, every event strengthens our mission of building a healthier, more inclusive, and sustainable society. We believe that collective participation creates lasting impact—and every individual has the power to make a difference.
+              </p>
             </div>
           </div>
 

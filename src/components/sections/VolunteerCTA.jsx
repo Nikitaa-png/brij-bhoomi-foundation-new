@@ -55,7 +55,7 @@ export default function VolunteerCTA() {
         {/* Hero Section */}
         <div className="max-w-3xl space-y-6">
           <span className="cinematic-reveal text-[11px] uppercase tracking-[0.3em] text-[#B67A2A] font-sora font-semibold block">
-            Volunteer
+            VOLUNTEER
           </span>
           <h2 className="cinematic-reveal text-3xl md:text-5xl font-sora font-semibold tracking-tight leading-tight text-[#2E2E2E]">
             Become a Volunteer — Be the Change You Wish to See
@@ -64,13 +64,13 @@ export default function VolunteerCTA() {
             Your Time. Your Skills. Your Passion. Their Better Tomorrow.
           </p>
           <p className="cinematic-reveal text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal">
-            At Brij Bhoomi Foundation, volunteers are the heart of every initiative. Every successful campaign, every child educated, every tree planted, every family supported, and every community empowered is possible because compassionate individuals choose to make a difference. Whether you're a student, working professional, entrepreneur, retired professional, or corporate employee, your contribution can create a lasting social impact. Change begins with one person. That person can be you.
+            At BrijBhoomi Foundation, volunteers are the heart of every initiative. Every successful campaign, every child educated, every tree planted, every family supported, and every community empowered is possible because compassionate individuals choose to make a difference. Whether you're a student, working professional, entrepreneur, retired professional, or corporate employee, your contribution can create a lasting social impact. Change begins with one person. That person can be you.
           </p>
         </div>
 
         {/* Why Volunteer With Us */}
         <div className="cinematic-reveal space-y-4 border-t border-[#D8C6A8] pt-12">
-          <h3 className="text-xl font-sora font-semibold text-[#2E2E2E]">Why Volunteer With Us?</h3>
+          <h3 className="text-xl font-sora font-semibold text-[#2E2E2E]">WHY VOLUNTEER WITH US?</h3>
           <p className="text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal max-w-3xl">
             Volunteering is more than giving your time—it's about creating opportunities, transforming lives, and becoming part of a movement dedicated to building a stronger and more compassionate society. As a volunteer, you'll work alongside passionate individuals, social leaders, educators, healthcare professionals, and community members to solve real-world challenges.
           </p>
