@@ -88,35 +88,38 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="w-full h-screen min-h-screen flex items-center justify-start bg-black relative overflow-hidden z-20 px-[8vw] pt-[100px] md:pt-[120px]">
+    <section id="hero" className="w-full h-auto min-h-screen md:h-screen flex items-center justify-start bg-black relative overflow-hidden z-20 px-5 md:px-[8vw] pt-[120px] pb-16 md:py-0">
       
-      {/* Background Video (Edge-to-edge, loops as part of the sequence via onEnded) */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        playsInline
-        onEnded={handleVideoEnded}
-        className={`absolute inset-0 w-full h-full object-cover z-0 pointer-events-none transition-opacity duration-1000 ${
-          currentMedia === "video" ? "opacity-85 scale-100" : "opacity-0 scale-[1.02] pointer-events-none"
-        }`}
-      >
-        <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
-      </video>
-
-      {/* Background Slideshow Images (Edge-to-edge cover layout, preloaded via parallel rendering) */}
-      {images.map((img, index) => (
-        <img
-          key={img.src}
-          src={img.src}
-          alt={img.alt}
-          className={`absolute inset-0 w-full h-full object-cover z-0 pointer-events-none transition-all duration-1000 ease-in-out ${
-            currentMedia === "image" && index === currentImageIdx
-              ? "opacity-85 scale-100"
-              : "opacity-0 scale-[1.04] pointer-events-none"
+      {/* Background Visuals Wrapper (Forces absolute stretching on mobile flex layouts) */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        {/* Background Video (Loops as part of the sequence via onEnded) */}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnded}
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${
+            currentMedia === "video" ? "opacity-85 scale-100" : "opacity-0 scale-[1.02]"
           }`}
-        />
-      ))}
+        >
+          <source src="/brij-bhoomi-hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* Background Slideshow Images (Preloaded via parallel rendering) */}
+        {images.map((img, index) => (
+          <img
+            key={img.src}
+            src={img.src}
+            alt={img.alt}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+              currentMedia === "image" && index === currentImageIdx
+                ? "opacity-85 scale-100"
+                : "opacity-0 scale-[1.04]"
+            }`}
+          />
+        ))}
+      </div>
 
       {/* Dark Mask Overlay - Spans full width and height for readability */}
       <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/50 to-black/70 z-10 pointer-events-none" />

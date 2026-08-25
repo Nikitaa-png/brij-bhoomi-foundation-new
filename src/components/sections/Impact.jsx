@@ -48,7 +48,7 @@ export default function Impact() {
   }, []);
 
   return (
-    <section id="impact" className="w-screen py-28 px-[8vw] lg:py-36 bg-transparent relative z-20 border-t border-[#D8C6A8] overflow-hidden">
+    <section id="impact" className="w-full py-28 px-5 md:px-[8vw] lg:py-36 bg-transparent relative z-20 border-t border-[#D8C6A8] overflow-hidden">
       
       <GrainyBackground 
         id="grainy-paper-impact" 

@@ -27,7 +27,7 @@ function PreviewSection({ id, bg, border, children }) {
   const ref = useRef(null);
   useCinematicReveal(ref);
   return (
-    <section id={id} className={`w-full py-20 px-[8vw] ${bg} relative z-20 border-t border-t-[#1f1a14]/10 overflow-hidden`}>
+    <section id={id} className={`w-full py-20 px-5 md:px-[8vw] ${bg} relative z-20 border-t border-t-[#1f1a14]/10 overflow-hidden`}>
       <div ref={ref} className="w-full max-w-none relative z-10">{children}</div>
     </section>
   );
@@ -138,11 +138,18 @@ function ImpactPreview() {
       <p className="cinematic-reveal text-xs md:text-sm text-[#555555] leading-relaxed font-inter font-normal max-w-3xl mb-8">
         At Brij Bhoomi Foundation, we build long-term, structural solutions through education, healthcare, environmental conservation, women empowerment, rural development, and youth initiatives.
       </p>
-      <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+      <div className="cinematic-reveal grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 w-full">
         {homeImpactStats.map((s) => (
-          <div key={s.label} className="bg-[#FCFAF5] border border-[#D8C6A8]/70 rounded-[16px] p-6 text-center">
-            <div className="text-3xl font-sora font-semibold text-[#8B6F47] mb-1">{s.value}</div>
-            <div className="text-xs font-sora font-semibold text-[#2E2E2E]">{s.label}</div>
+          <div
+            key={s.label}
+            className="bg-[#FCFAF5] border border-[#D8C6A8]/70 rounded-[16px] p-3 sm:p-4 md:p-6 text-center flex flex-col justify-center items-center h-full w-full min-w-0"
+          >
+            <div className="text-[clamp(1.25rem,5vw,1.875rem)] font-sora font-semibold text-[#8B6F47] mb-1 leading-none">
+              {s.value}
+            </div>
+            <div className="text-[11px] sm:text-xs font-sora font-semibold text-[#2E2E2E] mt-1 leading-normal">
+              {s.label}
+            </div>
           </div>
         ))}
       </div>
